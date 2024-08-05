@@ -1,0 +1,41 @@
+<main class="p-5 min-h-screen w-full bg-white flex flex-col items-center">
+  <div class="flex flex-col">
+    <h2 class="font-inter text-2xl">This is my first Angular app</h2>
+    <div>
+      <button
+        class="bg-white rounded-full border border-slate-600 text-slate-700 w-fit px-3 mt-3 hover:text-black hover:border-black hover:shadow duration-100 ease-out"
+        (click)="increment()"
+        type="button"
+      >
+        Increment (+)
+      </button>
+    </div>
+    <div>
+      <button
+        class="bg-white rounded-full border border-slate-600 text-slate-700 w-fit px-3 mt-3 hover:text-black hover:border-black hover:shadow duration-100 ease-out"
+        (click)="decrement()"
+      >
+        Decrement (-)
+      </button>
+    </div>
+    <div class="flex items-cener justify-center">
+      <p class="text-lg font-medium font-inter">Count: {{ count }}</p>
+      &nbsp;
+      <p class="text-lg font-medium font-inter">Limit: {{ limit }}</p>
+    </div>
+    <p class="text-sm text-red-500">{{ error }}</p>
+
+    <div>
+      <input
+        (change)="onChange($event)"
+        type="text"
+        class="p-2 border border-slate-300 rounded"
+      />
+    </div>
+    <div>
+      <button class="bg-blue-500 rounded-md px-3 py-1 text-white my-2">
+        Change limits
+      </button>
+    </div>
+  </div>
+</main>
