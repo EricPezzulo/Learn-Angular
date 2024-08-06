@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { UserComponent } from '../user/user.component';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HomeComponent],
+  imports: [HomeComponent, UserComponent, CommonModule],
   templateUrl: './home.component.html',
   // styleUrl: './home.component.css',
 })

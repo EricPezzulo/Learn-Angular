@@ -1,0 +1,51 @@
+<div class="p-5 shadow border border-slate-300 rounded-xl">
+  <div class="flex flex-row items-start justify-between">
+    <img
+      class="w-36 h-36 object-cover rounded-xl"
+      [src]="userData.photo"
+      alt="billy butcher profile pic"
+    />
+    <button (click)="toggleEdit()" type="button" class="hover:underline">
+      @if(!edit){Edit}@else {Save}
+    </button>
+  </div>
+  <div class="py-3">
+    @if(edit){ Name:
+    <input
+      class="w-36 h-8 border border-slate-300 px-2 py-1 rounded"
+      type="text"
+      (change)="updateName($event)"
+    />
+
+    } @else {
+    <p class="py-1">Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+    }
+
+    <p>Phone Number: {{ userData.phoneNumber }}</p>
+    <p class="py-1">Address: {{ userData.address }}</p>
+
+    <div class="flex items-center">
+      <p>Confirmed Kills: {{ userData.confirmedKills }}</p>
+      <div class="flex px-2">
+        <button
+          class="flex items-center justify-center w-6 h-6 bg-white hover:bg-slate-100 border border-slate-500 hover:border-700 hover:border-black hover:text-black text-slate-500 hover:shadow mx-1 rounded"
+          (click)="increment()"
+        >
+          +
+        </button>
+        <button
+          class="flex items-center justify-center w-6 h-6 bg-white hover:bg-slate-100 border border-slate-500 hover:border-700 hover:border-black hover:text-black text-slate-500 hover:shadow mx-1 rounded"
+          (click)="decrement()"
+        >
+          -
+        </button>
+      </div>
+    </div>
+    @if (userData.confirmedKillsError) {
+    <div class="flex items-center pt-1">
+      <p class="text-red-500 text-sm">{{ userData.confirmedKillsErrorMsg }}</p>
+    </div>
+
+    }
+  </div>
+</div>
