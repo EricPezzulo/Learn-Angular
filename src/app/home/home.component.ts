@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { UserComponent } from '../user/user.component';
 import { CommonModule } from '@angular/common';
+import { DialogComponent } from '../dialog/dialog.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HomeComponent, UserComponent, CommonModule],
+  imports: [HomeComponent, UserComponent, CommonModule, DialogComponent],
   templateUrl: './home.component.html',
   // styleUrl: './home.component.css',
 })

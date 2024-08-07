@@ -2,6 +2,7 @@
   <div class="flex flex-row items-start justify-between">
     <div class="group relative">
       <button
+        (click)="openDialog()"
         type="button"
         class="hidden absolute items-center justify-center group-hover:flex hover:cursor-pointer w-full h-full bg-black bg-opacity-10 rounded-xl"
       >
@@ -81,3 +82,7 @@
     }
   </div>
 </div>
+<app-dialog
+  [dialogOpen]="dialogOpen"
+  (dialogClosed)="handleDialogClosed()"
+></app-dialog>

@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { UserData } from '../user-data';
 import { MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, DialogComponent],
   templateUrl: './user.component.html',
   // styleUrl: './user.component.css'
 })
@@ -24,8 +25,18 @@ export class UserComponent {
     active: true,
   };
 
+  dialogOpen: boolean = false;
+
   edit: boolean = false;
 
+  openDialog() {
+    this.dialogOpen = true;
+    console.log(this.dialogOpen);
+  }
+
+  handleDialogClosed() {
+    this.dialogOpen = false;
+  }
   updateName(e: any) {
     const splitString = e.target.value.split(' ');
     if (splitString.length > 1) {
