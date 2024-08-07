@@ -1,12 +1,31 @@
 <div class="p-5 shadow border border-slate-300 rounded-xl">
   <div class="flex flex-row items-start justify-between">
-    <img
-      class="w-36 h-36 object-cover rounded-xl"
-      [src]="userData.photo"
-      alt="billy butcher profile pic"
-    />
-    <button (click)="toggleEdit()" type="button" class="hover:underline">
-      @if(!edit){Edit}@else {Save}
+    <div class="group relative">
+      <button
+        type="button"
+        class="hidden absolute items-center justify-center group-hover:flex hover:cursor-pointer w-full h-full bg-black bg-opacity-10 rounded-xl"
+      >
+        <mat-icon class="scale-[2.5] text-white opacity-70"
+          >photo_camera</mat-icon
+        >
+      </button>
+
+      <img
+        class="w-36 h-36 object-cover rounded-xl"
+        [src]="userData.photo"
+        alt="billy butcher profile pic"
+      />
+    </div>
+    <button
+      (click)="toggleEdit()"
+      type="button"
+      class="hover:bg-slate-100 rounded duration-100 ease-in flex items-center justify-center p-1"
+    >
+      @if(!edit){
+      <mat-icon> edit </mat-icon>
+      }@else {
+      <mat-icon> check </mat-icon>
+      }
     </button>
   </div>
   <div class="py-3">
@@ -15,13 +34,26 @@
       class="w-36 h-8 border border-slate-300 px-2 py-1 rounded"
       type="text"
       (change)="updateName($event)"
+      [defaultValue]="userData.firstName + ' ' + userData.lastName"
     />
 
     } @else {
     <p class="py-1">Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+    } @if(edit){
+    <div class="flex flex-col">
+      <p>Phone Number :</p>
+      <input
+        class="w-36 h-8 border border-slate-300 px-2 py-1 rounded"
+        type="text"
+        (change)="updateName($event)"
+        [defaultValue]="userData.phoneNumber"
+      />
+    </div>
+
+    } @else {
+    <p class="py-1">Phone Number: {{ userData.phoneNumber }}</p>
     }
 
-    <p>Phone Number: {{ userData.phoneNumber }}</p>
     <p class="py-1">Address: {{ userData.address }}</p>
 
     <div class="flex items-center">

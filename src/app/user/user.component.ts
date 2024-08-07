@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { UserData } from '../user-data';
-import { first } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './user.component.html',
   // styleUrl: './user.component.css'
 })
