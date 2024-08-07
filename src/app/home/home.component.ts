@@ -4,10 +4,17 @@ import { CommonModule } from '@angular/common';
 import { DialogComponent } from '../dialog/dialog.component';
 import userList from '../../../db.json';
 import { UserData } from '../user-data';
+import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [UserComponent, CommonModule, DialogComponent],
+  imports: [
+    UserComponent,
+    CommonModule,
+    DialogComponent,
+    RouterLink,
+    RouterOutlet,
+  ],
   templateUrl: './home.component.html',
   // styleUrl: './home.component.css',
 })

@@ -4,11 +4,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../dialog/dialog.component';
 import { HomeComponent } from '../home/home.component';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule, DialogComponent, HomeComponent, FormsModule],
+  imports: [
+    MatIconModule,
+    DialogComponent,
+    HomeComponent,
+    FormsModule,
+    RouterLink,
+  ],
   templateUrl: './user.component.html',
 })
 export class UserComponent {
