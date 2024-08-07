@@ -2,65 +2,57 @@ import { Component, Input } from '@angular/core';
 import { UserData } from '../user-data';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../dialog/dialog.component';
+import { HomeComponent } from '../home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule, DialogComponent],
+  imports: [MatIconModule, DialogComponent, HomeComponent, FormsModule],
   templateUrl: './user.component.html',
-  // styleUrl: './user.component.css'
 })
 export class UserComponent {
-  userData: UserData = {
-    firstName: 'Billy',
-    lastName: 'Butcher',
-    address: 'Unknown',
-    phoneNumber: 'Unknown',
-    photo:
-      'https://staticg.sportskeeda.com/editor/2024/05/b4e89-17164144459909-1920.jpg?w=640',
-    confirmedKills: 3,
-    confirmedKillsErrorMsg: 'Cannot have less than 0 kills.',
-    confirmedKillsError: false,
-
-    active: true,
-  };
-
   dialogOpen: boolean = false;
-
   edit: boolean = false;
+  fullName!: string;
+  @Input() user!: UserData;
 
+  ngOnInit(): void {
+    this.fullName = `${this.user.firstName} ${this.user.lastName}`;
+  }
   openDialog() {
     this.dialogOpen = true;
-    console.log(this.dialogOpen);
   }
 
   handleDialogClosed() {
     this.dialogOpen = false;
   }
-  updateName(e: any) {
-    const splitString = e.target.value.split(' ');
+  updateName(e: Event) {
+    const inputElement = e.target as HTMLInputElement;
+    const splitString = inputElement.value.split(' ');
     if (splitString.length > 1) {
       let firstName = splitString[0];
       let lastName = splitString[1];
 
-      this.userData.firstName = firstName;
-      this.userData.lastName = lastName;
+      this.user.firstName = firstName;
+      this.user.lastName = lastName;
     }
   }
-  increment() {
-    this.userData.confirmedKills++;
-    this.userData.confirmedKillsError = false;
+  updatePhoneNumnber(e: Event) {
+    const inputElement = e.target as HTMLInputElement;
+    this.user.phoneNumber = inputElement.value;
   }
-  decrement() {
-    if (this.userData.confirmedKills <= 0) {
-      this.userData.confirmedKillsError = true;
-    } else if (this.userData.confirmedKills >= 0) {
-      this.userData.confirmedKills--;
-      this.userData.confirmedKillsError = false;
-    } else {
-      this.userData.confirmedKills--;
-    }
+
+  updateAddress(e: Event) {
+    const inputElement = e.target as HTMLInputElement;
+    this.user.address = inputElement.value;
   }
+
+  updateAge(e: Event) {
+    const inputElement = e.target as HTMLInputElement;
+    this.user.age = inputElement.value;
+  }
+
   toggleEdit = () => {
     this.edit = !this.edit;
   };

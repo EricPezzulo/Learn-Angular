@@ -1,6 +1,6 @@
-<div class="p-5 shadow border border-slate-300 rounded-xl">
+<div class="p-5 hover:shadow border border-1 border-slate-200 rounded-xl">
   <div class="flex flex-row items-start justify-between">
-    <div class="group relative">
+    <div class="group relative w-full">
       <button
         (click)="openDialog()"
         type="button"
@@ -10,79 +10,95 @@
           >photo_camera</mat-icon
         >
       </button>
+      <div class="w-full h-36 overflow-hidden rounded-xl">
+        <img
+          class="w-full h-full object-cover"
+          [src]="user.photoUrl"
+          [alt]="user.firstName + ' ' + user.lastName + ' profile picture'"
+        />
+      </div>
+    </div>
+  </div>
 
-      <img
-        class="w-36 h-36 object-cover rounded-xl"
-        [src]="userData.photo"
-        alt="billy butcher profile pic"
+  <div class="py-3">
+    @if(edit){
+    <div class="flex flex-col items-center justify-center">
+      <div class="flex flex-row justify-between w-full">
+        <label for="nameInput">Name:</label>
+        <button
+          (click)="toggleEdit()"
+          type="button"
+          class="hover:bg-slate-100 rounded duration-100 ease-in flex items-center justify-center p-1 w-8 h-8"
+        >
+          <mat-icon class="text-slate-700"> check </mat-icon>
+        </button>
+      </div>
+      <input
+        name="nameInput"
+        class="w-full h-8 border border-slate-300 px-1 py-1 rounded"
+        type="text"
+        (change)="updateName($event)"
+        [(ngModel)]="fullName"
       />
     </div>
-    <button
-      (click)="toggleEdit()"
-      type="button"
-      class="hover:bg-slate-100 rounded duration-100 ease-in flex items-center justify-center p-1"
-    >
-      @if(!edit){
-      <mat-icon> edit </mat-icon>
-      }@else {
-      <mat-icon> check </mat-icon>
-      }
-    </button>
-  </div>
-  <div class="py-3">
-    @if(edit){ Name:
-    <input
-      class="w-36 h-8 border border-slate-300 px-2 py-1 rounded"
-      type="text"
-      (change)="updateName($event)"
-      [defaultValue]="userData.firstName + ' ' + userData.lastName"
-    />
 
     } @else {
-    <p class="py-1">Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+    <div class="flex justify-between h-10">
+      <p class="py-1">Name: {{ user.firstName }} {{ user.lastName }}</p>
+      <button
+        (click)="toggleEdit()"
+        type="button"
+        class="hover:bg-slate-100 rounded duration-100 ease-in flex items-center justify-center p-1 w-8 h-8"
+      >
+        <mat-icon class="text-slate-700"> edit </mat-icon>
+      </button>
+    </div>
     } @if(edit){
     <div class="flex flex-col">
       <p>Phone Number :</p>
       <input
-        class="w-36 h-8 border border-slate-300 px-2 py-1 rounded"
+        class="w-full h-8 border border-slate-300 px-2 py-1 rounded"
         type="text"
-        (change)="updateName($event)"
-        [defaultValue]="userData.phoneNumber"
+        (change)="updatePhoneNumnber($event)"
+        [defaultValue]="user.phoneNumber"
+        placeholder="Unknown"
+        [(ngModel)]="user.phoneNumber"
       />
     </div>
 
     } @else {
-    <p class="py-1">Phone Number: {{ userData.phoneNumber }}</p>
-    }
-
-    <p class="py-1">Address: {{ userData.address }}</p>
-
-    <div class="flex items-center">
-      <p>Confirmed Kills: {{ userData.confirmedKills }}</p>
-      <div class="flex px-2">
-        <button
-          class="flex items-center justify-center w-6 h-6 bg-white hover:bg-slate-100 border border-slate-500 hover:border-700 hover:border-black hover:text-black text-slate-500 hover:shadow mx-1 rounded"
-          (click)="increment()"
-        >
-          +
-        </button>
-        <button
-          class="flex items-center justify-center w-6 h-6 bg-white hover:bg-slate-100 border border-slate-500 hover:border-700 hover:border-black hover:text-black text-slate-500 hover:shadow mx-1 rounded"
-          (click)="decrement()"
-        >
-          -
-        </button>
-      </div>
-    </div>
-    @if (userData.confirmedKillsError) {
-    <div class="flex items-center pt-1">
-      <p class="text-red-500 text-sm">{{ userData.confirmedKillsErrorMsg }}</p>
+    <p class="py-1">Phone Number: {{ user.phoneNumber || "Unknown" }}</p>
+    } @if(edit) {
+    <label for="addressInput">
+      <p>Address:</p>
+      <input
+        (change)="updateAddress($event)"
+        type="text"
+        class="w-full h-8 border border-slate-300 px-2 py-1 rounded"
+        [(ngModel)]="user.address"
+        placeholder="Unknown"
+      />
+    </label>
+    } @else {
+    <p class="py-1">Address: {{ user.address || "Unknown" }}</p>
+    } @if(edit){
+    <div class="flex flex-col">
+      <p>age :</p>
+      <input
+        class="w-full h-8 border border-slate-300 px-2 py-1 rounded"
+        type="text"
+        (change)="updateAge($event)"
+        [(ngModel)]="user.age"
+      />
     </div>
 
+    } @else {
+    <p class="py-1">Age: {{ user.age || "Unknown" }}</p>
     }
   </div>
+  <app-dialog
+    [dialogOpen]="dialogOpen"
+    (dialogClosed)="handleDialogClosed()"
+    [user]="user"
+  ></app-dialog>
 </div>
-<app-dialog
-  [dialogOpen]="dialogOpen"
-  (dialogClosed)="handleDialogClosed()"
-></app-dialog>

@@ -15,13 +15,38 @@
       </button>
     </div>
 
-    <p class="text-xl pb-5 pt-3">Change Photo</p>
+    <div class="flex font-inter flex-row text-xl pt-3">
+      <p>Change</p>
+      &nbsp;
+      <p class="font-medium text-blue-600">
+        {{ user.firstName }} {{ user.lastName }}'s
+      </p>
+      &nbsp;
+      <p>picture</p>
+    </div>
+
+    <div class="p-8">
+      <div class="w-full h-44 rounded-xl">
+        <img
+          class="object-cover w-full h-full rounded-xl"
+          [src]="user.photoUrl"
+          [alt]="user.firstName + ' ' + user.lastName + ' profile picture'"
+        />
+      </div>
+    </div>
+
     <label for="photoUrlInput">Photo URL: </label>
-    <input type="text" class="border border-slate-300 p-2 rounded-md" />
+    <input
+      (keyup.enter)="uploadPicture()"
+      (change)="handleChangePictureUrl($event)"
+      type="text"
+      class="border border-slate-300 p-2 rounded-md"
+    />
     <div
       class="grid grid-cols-2 gap-2 place-content-center place-items-center mt-10"
     >
       <button
+        (click)="uploadPicture()"
         type="button"
         class="w-24 rounded bg-blue-500 text-white font-inter px-2 py-1 hover:bg-blue-600 duration-100 ease-in-out"
       >

@@ -1,0 +1,144 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "firstName": "William",
+      "lastName": "Butcher",
+      "phoneNumber": null,
+      "address": null,
+      "age": "Late 40s",
+      "height": "6'2",
+      "weight": "200",
+      "alias": "The Butcher",
+      "associates": {
+        "firstName": null,
+        "lastName": "Milk",
+        "alias": "M.M."
+      },
+      "photoUrl": "https://staticg.sportskeeda.com/editor/2024/05/b4e89-17164144459909-1920.jpg?w=640"
+    },
+    {
+      "userId": 2,
+      "firstName": "Mother's",
+      "lastName": "Milk",
+      "phoneNumber": null,
+      "address": null,
+      "age": "Late 40s",
+      "height": "5'10",
+      "weight": "185",
+      "alias": "M.M.",
+      "associates": {
+        "firstName": "Willaim Butcher",
+        "lastName": "Butcher",
+        "alias": "The Butcher"
+      },
+      "photoUrl": "https://i.pinimg.com/736x/bd/f2/e3/bdf2e36180bb79e57ebc9dd5004af200.jpg"
+    },
+    {
+      "userId": 3,
+      "firstName": "Annie",
+      "lastName": "January",
+      "phoneNumber": "(646)-834-9475",
+      "address": "Vaught Tower",
+      "age": 29,
+      "height": "5'6",
+      "weight": "133",
+      "alias": "Starlight",
+      "associates": {
+        "firstName": "",
+        "lastName": "",
+        "alias": ""
+      },
+      "photoUrl": "https://img.theweek.in/content/dam/week/week/news/entertainment/images/2024/7/13/starlight-boys.jpg"
+    },
+    {
+      "userId": 4,
+      "firstName": "Hugh",
+      "lastName": "Campbell",
+      "phoneNumber": "(729)-433-9843",
+      "address": "Chicago",
+      "age": 31,
+      "height": "6'2",
+      "weight": "180",
+      "alias": "Hughie",
+      "associates": [
+        {
+          "firstName": "Annie",
+          "lastName": "January",
+          "alias": "Starlight"
+        },
+        {
+          "firstName": "William",
+          "lastName": "Butcher",
+          "alias": "The Butcher"
+        }
+      ],
+      "photoUrl": "https://imgix.ranker.com/list_img_v2/6050/2806050/original/best-hughie-campbell-quotes-u1?auto=format&q=50&fit=crop&fm=pjpg&dpr=2&crop=faces&h=185.86387434554973&w=355"
+    },
+    {
+      "userId": 5,
+      "firstName": "Serge",
+      "lastName": null,
+      "phoneNumber": null,
+      "address": "",
+      "age": 30,
+      "height": "5'7",
+      "weight": "165",
+      "alias": "Frenchie",
+      "associates": [
+        {
+          "firstName": "Kimiko",
+          "lastName": "Miyashiro",
+          "alias": "The Female"
+        },
+        {
+          "firstName": "Hugh",
+          "lastName": "Campbell",
+          "alias": "Hughie"
+        }
+      ],
+      "photoUrl": "https://variety.com/wp-content/uploads/2024/06/The-Boys-Frenchie.jpg"
+    },
+    {
+      "userId": 6,
+      "firstName": "Kimiko",
+      "lastName": "MIyashiro",
+      "phoneNumber": null,
+      "address": null,
+      "age": 25,
+      "height": "5'7",
+      "weight": "120",
+      "alias": "The Female",
+      "associates": {
+        "firstName": "Serge",
+        "lastName": null,
+        "alias": "Frenchie"
+      },
+      "photoUrl": "https://i.pinimg.com/originals/a2/fa/bc/a2fabcd805d1b16e7d7d96c87a29fae3.jpg"
+    },
+    {
+      "userId": 7,
+      "firstName": "Grace",
+      "lastName": "Mallory",
+      "phoneNumber": null,
+      "address": null,
+      "age": 62,
+      "height": "5'9",
+      "weight": null,
+      "alias": "Colonel Mallory",
+      "associates": [
+        {
+          "firstName": "William",
+          "lastName": "Butcher",
+          "alias": "The Butcher"
+        },
+        {
+          "firstName": null,
+          "lastName": "Milk",
+          "alias": "M.M."
+        }
+      ],
+      "photoUrl": "https://editors.dexerto.com/wp-content/uploads/2023/10/25/grace-mallory-the-boys-gen-v.jpg"
+    }
+  ]
+}
