@@ -1,0 +1,62 @@
+<div class="py-5">
+  <div class="grid grid-cols-2 place-items-start gap-5">
+    <div class="relative items-center">
+      <label
+        class="pr-1 absolute -top-3 bg-white px-2 left-3 z-20"
+        for="firstNameInput"
+        >First name:</label
+      >
+      <input
+        (change)="updateFirstName($event)"
+        type="text"
+        class="relative border border-slate-300 rounded-md p-1 h-10 focus:outline-none focus:ring-blue-500 focus:ring-2"
+      />
+    </div>
+    <div class="relative items-center">
+      <label
+        class="pr-1 absolute -top-3 bg-white px-2 left-3 z-20"
+        for="lastNameInput"
+        >Last name:</label
+      >
+      <input
+        (change)="updateLastName($event)"
+        name="lastNameInput"
+        type="text"
+        class="relative border border-slate-300 rounded-md p-1 h-10 focus:outline-none focus:ring-blue-500 focus:ring-2"
+      />
+    </div>
+    <div class="relative items-center">
+      <label
+        class="pr-1 absolute -top-3 bg-white px-2 left-3 z-20"
+        for="addressInput"
+        >Address:</label
+      >
+      <input
+        (change)="updateAddress($event)"
+        name="addressInput"
+        type="text"
+        class="relative border border-slate-300 rounded-md p-1 h-10 focus:outline-none focus:ring-blue-500 focus:ring-2"
+      />
+    </div>
+    <div class="relative items-center">
+      <label
+        class="pr-1 absolute -top-3 bg-white px-2 left-3 z-20"
+        for="phoneNumberInput"
+        >Phone number:</label
+      >
+      <input
+        (change)="updatePhoneNumber($event)"
+        name="phoneNumberInput"
+        type="text"
+        class="relative border border-slate-300 rounded-md p-1 h-10 focus:outline-none focus:ring-blue-500 focus:ring-2"
+      />
+    </div>
+    <button
+      (click)="addUser()"
+      class="flex items-center bg-slate-800 hover:bg-slate-700 duration-100 ease-in p-1 rounded-md text-white"
+    >
+      <mat-icon class="scale-75"> add </mat-icon>
+      <p class="pr-2">Add user</p>
+    </button>
+  </div>
+</div>

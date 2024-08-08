@@ -1,1 +1,114 @@
-<p>Hi {{ firstName }}!</p>
+<div class="w-full min-h-screen h-full flex flex-col items-center">
+  <div class="max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl w-full h-full p-5">
+    <div class="mb-5">
+      <a routerLink="/">
+        <button
+          type="button"
+          class="bg-white duration-100 ease-in hover:bg-slate-100 rounded p-1 flex items-center justify-center"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </a>
+    </div>
+    <div class="group relative w-96 h-80">
+      <button
+        (click)="openDialog()"
+        type="button"
+        class="hidden absolute items-center justify-center group-hover:flex hover:cursor-pointer w-full h-full bg-black bg-opacity-10 rounded-xl"
+      >
+        <mat-icon class="scale-[2.5] text-white opacity-70"
+          >photo_camera</mat-icon
+        >
+      </button>
+      <div class="w-full h-full overflow-hidden rounded-xl">
+        <img
+          class="w-96 h-80 object-cover"
+          src="{{ user.photoUrl }}"
+          alt="{{ user.firstName }} {{ user.lastName }}'s profile picture"
+        />
+      </div>
+
+      <div class="w-full">
+        <div class="flex flex-row justify-between items-center max-w-sm w-full">
+          <div class="relative my-4">
+            <label
+              class="absolute -top-3 left-4 bg-white px-2 text-slate-800"
+              for="phoneNumberInput"
+              >First name</label
+            ><input
+              (change)="updateFirstName($event)"
+              type="text"
+              class="border w-64 h-12 border-slate-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 disabled:bg-white"
+              [(ngModel)]="user.firstName"
+              placeholder="unknown"
+              disabled="{{ !edit }}"
+            />
+          </div>
+          <button
+            class="h-8 p-1 hover:bg-slate-100 rounded duration-100 text-slate-700"
+            *ngIf="edit"
+            (click)="handleToggleEdit()"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+          <button
+            class="h-8 p-1 hover:bg-slate-100 rounded duration-100 text-slate-700"
+            *ngIf="!edit"
+            (click)="handleToggleEdit()"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+        <div class="relative my-4">
+          <label
+            class="absolute -top-3 left-4 bg-white px-2 text-slate-800"
+            for="lastNameInput"
+            >Last name</label
+          ><input
+            name="lastNameInput"
+            (change)="updateLastName($event)"
+            type="text"
+            class="border w-64 h-12 border-slate-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 disabled:bg-white"
+            [(ngModel)]="user.lastName"
+            placeholder="unknown"
+            disabled="{{ !edit }}"
+          />
+        </div>
+        <div class="relative my-4">
+          <label
+            class="absolute -top-3 left-4 bg-white px-2 text-slate-800"
+            for="phoneNumberInput"
+            >Address</label
+          ><input
+            (change)="updateAddress($event)"
+            type="text"
+            class="border w-64 h-12 border-slate-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 disabled:bg-white"
+            [(ngModel)]="user.address"
+            placeholder="unknown"
+            disabled="{{ !edit }}"
+          />
+        </div>
+        <div class="relative my-4">
+          <label
+            class="absolute -top-3 left-4 bg-white px-2 text-slate-800"
+            for="phoneNumberInput"
+            >Phone Number</label
+          ><input
+            (change)="updatePhoneNumnber($event)"
+            type="text"
+            class="border w-64 h-12 border-slate-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 disabled:bg-white"
+            [(ngModel)]="user.phoneNumber"
+            placeholder="unknown"
+            disabled="{{ !edit }}"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-dialog
+    [dialogOpen]="dialogOpen"
+    (dialogClosed)="handleDialogClosed()"
+    [user]="user"
+  ></app-dialog>
+</div>
