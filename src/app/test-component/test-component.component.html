@@ -2,7 +2,7 @@
   class="min-h-screen h-full w-full items-center justify-center flex flex-col"
 >
   <div
-    [@openDropShadow]="isDropShadowOpen ? 'open':'closed'"
+    [@openDropShadow]="isDropShadowOpen ? 'open' : 'closed'"
     (click)="handleCloseDialog()"
     class="fixed w-full h-full bg-black bg-opacity-20 z-20"
   ></div>
@@ -11,14 +11,21 @@
     [@openDialog]="isDialogOpen ? 'open' : 'closed'"
     class="fixed z-30 bg-white w-96 h-56 rounded-lg shadow items-center flex flex-col justify-center p-5"
   >
-  <button (click)="handleCloseDialog()" class='hover:bg-slate-100 bg-transparent rounded p-1 out items-center justify-center flex duration-100 ease-in absolute top-2 right-2'>
-    <mat-icon>close</mat-icon>
-  </button>
-    
-  <p class='text-xl mb-5'>Upload Input</p>
-  <input 
-    (change)="handleInput($event)"
-  class='rounded-lg border border-slate-300 h-10 w-full px-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3' type="text">
+    <button
+      (click)="handleCloseDialog()"
+      class="hover:bg-slate-100 bg-transparent rounded p-1 out items-center justify-center flex duration-100 ease-in absolute top-2 right-2"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <p class="text-xl mb-5">Upload Input</p>
+    <input
+      [(ngModel)]="inputText"
+      (keyup.enter)="handleSave()"
+      (change)="handleInput($event)"
+      class="rounded-lg border border-slate-300 h-10 w-full px-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+      type="text"
+    />
 
     <button
       (click)="handleSave()"
@@ -30,7 +37,7 @@
   <p class="text-3xl font-inter font-medium p-2">Trying Angular animations</p>
 
   <button
-    (click)="toggle('test')"
+    (click)="toggle('Toast Launched!')"
     class="bg-emerald-500 rounded-full font-medium text-white w-40 h-8 hover:bg-emerald-400 duration-100 ease-in hover:shadow"
   >
     Toggle Toast
@@ -45,6 +52,6 @@
     [@openClose]="isOpen ? 'open' : 'closed'"
     class="fixed right-5 bottom-5 w-full max-w-56 h-20 bg-slate-100 shadow m-5 rounded-lg flex items-center justify-start"
   >
-    <p class="p-3 font-medium font-inter">{{toastMsg}}</p>
+    <p class="p-3 font-medium font-inter">{{ toastMsg }}</p>
   </div>
 </div>

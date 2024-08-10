@@ -8,11 +8,12 @@ import {
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-test-component',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, FormsModule],
   templateUrl: './test-component.component.html',
   animations: [
     trigger('openClose', [
@@ -77,7 +78,9 @@ export class TestComponentComponent {
   isOpen: boolean = false;
   isDialogOpen: boolean = false;
   isDropShadowOpen: boolean = false;
-  toastMsg: string  = '';
+  toastMsg: string = '';
+  inputText: string = '';
+
   toggle(message: string) {
     this.toastMsg = message;
     this.isOpen = !this.isOpen;
@@ -94,14 +97,18 @@ export class TestComponentComponent {
     this.isDialogOpen = false;
   }
   handleSave() {
-    this.handleCloseDialog()
-    setTimeout(()=>{
+    this.toastMsg = this.inputText;
+    this.handleCloseDialog();
+    this.inputText = '';
+    setTimeout(() => {
       this.toggle(this.toastMsg);
-    },500)
-    
+    }, 500);
+    setTimeout(() => {
+      this.toastMsg = '';
+    }, 3501);
   }
   handleInput(e: Event) {
     const inputElement = e.target as HTMLInputElement;
-    this.toastMsg = inputElement.value
+    this.inputText = inputElement.value;
   }
 }
