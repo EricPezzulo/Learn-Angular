@@ -1,0 +1,19 @@
+<div
+  class="min-h-screen h-full w-full items-center justify-center flex flex-col"
+>
+  <p class="text-3xl font-inter font-medium p-2">Trying Angular animations</p>
+
+  <button
+    (click)="toggle()"
+    class="bg-emerald-500 rounded-full font-medium text-white w-40 h-8 hover:bg-emerald-400 duration-100 ease-in hover:shadow"
+  >
+    Toggle Animation
+  </button>
+  <div
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    class=" fixed right-5 bottom-5 w-full max-w-56 h-20 bg-slate-100 shadow  m-5 rounded-lg flex items-center justify-start"
+  >
+<p class="p-3 font-medium font-inter">Animation Triggered!</p>
+
+</div>
+</div>
