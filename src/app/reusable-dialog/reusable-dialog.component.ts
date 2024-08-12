@@ -16,8 +16,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   animations: [
     trigger('openDialog', [
-      state('open', style({ opacity: 1 })),
-      state('closed', style({ opacity: 0 })),
+      state('open', style({ opacity: 1, transform:'translateY(0px)' })),
+      state('closed', style({ opacity: 0, transform: 'translateY(35px)'})),
       transition('open <=> closed', animate('100ms')),
     ]),
     trigger('openBackdrop', [
@@ -36,10 +36,15 @@ export class ReusableDialogComponent {
  @ViewChild('inputElement') inputElement!: ElementRef;
 
  @Input() elemList!: string[];
-
+ private focusInput(){
+  if(this.inputElement){
+    this.inputElement.nativeElement.focus()
+  }
+ }
   openDialog() {
     this.isBackdropOpen = true;
     this.isOpen = true;
+    this.focusInput()
   }
   closeDialog() {
     this.isBackdropOpen = false;

@@ -16,7 +16,24 @@ import { DialogComponent } from '../dialog/dialog.component';
   standalone: true,
   imports: [CommonModule, MatIconModule, FormsModule, ReusableDialogComponent],
   templateUrl: './test-component.html',
-  animations: [],
+  animations: [
+    trigger('addItem', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(100px)' }),
+        animate(
+          '200ms 200ms',
+          style({ opacity: 1, transform: 'translateY(0px)' })
+        ),
+      ]),
+      transition(':leave', [
+        style({ opacity: 1, transform: 'translateY(0px)' }),
+        animate(
+          '200ms',
+          style({ opacity: 0, transform: 'translateY(100px)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class TestComponent {
   isOpen: boolean = false;
@@ -25,7 +42,7 @@ export class TestComponent {
   toastMsg: string = '';
   inputText: string = '';
 
-@ViewChild(ReusableDialogComponent) dialog!: ReusableDialogComponent;
+  @ViewChild(ReusableDialogComponent) dialog!: ReusableDialogComponent;
 
   toggle(message: string) {
     this.toastMsg = message;
@@ -37,12 +54,14 @@ export class TestComponent {
   toggleDialog() {
     // this.isDropShadowOpen = true;
     // this.isDialogOpen = true;
-    this.dialog.openDialog()
-    
+    this.dialog.openDialog();
   }
 
-   elemList: string[] = []
-
+  elemList: string[] = [];
+  deleteElem(elem: any) {
+    this.elemList = this.elemList.filter((el) => el !== elem);
+    console.log(this.elemList);
+  }
   openDialog() {
     this.isDialogOpen = true;
     this.isDropShadowOpen = true;
@@ -52,5 +71,4 @@ export class TestComponent {
     this.isDialogOpen = false;
     this.isDropShadowOpen = false;
   }
-  
 }
