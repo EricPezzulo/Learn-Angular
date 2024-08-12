@@ -1,76 +1,4 @@
-// import {
-//   animate,
-//   state,
-//   style,
-//   transition,
-//   trigger,
-// } from '@angular/animations';
-// import { CommonModule } from '@angular/common';
-// import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-// @Component({
-//   selector: 'app-reusable-dialog',
-//   standalone: true,
-//   imports: [CommonModule],
-//   templateUrl: './reusable-dialog.component.html',
-//   styleUrl: './reusable-dialog.component.css',
-//   animations: [
-//     trigger('openDialog', [
-//       state(
-//         'open',
-//         style({
-//           opacity: 1,
-//           // display: 'fixed',
-//           transform: 'translateY(0px)',
-//           zIndex: 20,
-
-//         })
-//       ),
-//       state(
-//         'closed',
-//         style({
-//           opacity: 1,
-//           zIndex: -10,
-//           transform: 'translateY(35px)',
-//         })
-//       ),
-//       transition('open <=> closed', animate('.2s ease-in-out')),
-//       // transition('closed => open', animate('.2s ease-in')),
-//     ]),
-//     trigger('openBackdrop', [
-//       state(
-//         'open',
-//         style({
-//           opacity: 1,
-//           zIndex:10
-//         })
-//       ),
-//       state(
-//         'closed',
-//         style({
-//           opacity: 0,
-//           zIndex: -10,
-//           // transform: 'translateY(0px)',
-//         })
-//       ),
-//       transition('open <=> closed', animate('.2s ease-in-out')),
-//     ]),
-//   ],
-// })
-// export class ReusableDialogComponent {
-//   @Input() isDialogOpen: boolean = false;
-//   @Input() isDropShadowOpen: boolean = false;
-//   @Output() handleCloseDialog: EventEmitter<void> = new EventEmitter<void>();
-
-//   handleClose() {
-//     this.isDialogOpen = false;
-//     this.handleCloseDialog.emit();
-//   }
-//   ngOnInit() {
-//     console.log(this.isDialogOpen);
-//   }
-// }
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, ViewChild,Input} from '@angular/core';
 import {
   animate,
   state,
@@ -88,40 +16,47 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   animations: [
     trigger('openDialog', [
-      state(
-        'open',
-        style({ opacity: 1, transform: 'translateY(0)', zIndex: 30 })
-      ),
-      state(
-        'closed',
-        style({ opacity: 1, transform: 'translateY(35px)', zIndex: -10 })
-      ),
-      transition('open <=> closed', animate('.2s ease-in-out')),
+      state('open', style({ opacity: 1 })),
+      state('closed', style({ opacity: 0 })),
+      transition('open <=> closed', animate('100ms')),
     ]),
     trigger('openBackdrop', [
-      state('open', style({ opacity: 1, zIndex: 20 })),
-      state('closed', style({ opacity: 0, zIndex: -10 })),
-      transition('open <=> closed', animate('.2s ease-in-out')),
+      state('open', style({ opacity: 1, zIndex: 50 })),
+      state('closed', style({ opacity: 0, zIndex: -50 })),
+      transition('open <=> closed', animate('200ms')),
     ]),
   ],
 })
 export class ReusableDialogComponent {
-  @Input() isDialogOpen: boolean = false;
-  @Input() isDropShadowOpen: boolean = false;
-  @Output() handleCloseDialog: EventEmitter<void> = new EventEmitter<void>();
+  isOpen: boolean = false;
+  isBackdropOpen: boolean = false;
 
-  isOpen: boolean = true;
+  inputValue:string = ''
+
+ @ViewChild('inputElement') inputElement!: ElementRef;
+
+ @Input() elemList!: string[];
 
   openDialog() {
+    this.isBackdropOpen = true;
     this.isOpen = true;
   }
   closeDialog() {
+    this.isBackdropOpen = false;
     this.isOpen = false;
+    this.clearInput()
   }
-
-  handleClose() {
-    this.isDialogOpen = false;
-    this.isDropShadowOpen = false;
-    this.handleCloseDialog.emit();
+  handleChange(e:Event){
+    const inputElement = e.target as HTMLInputElement;
+    this.inputValue = inputElement.value;
+  }
+  submit() {
+    this.elemList.push(this.inputValue)
+    this.clearInput()
+    console.log(this.elemList)
+    this.closeDialog()
+  }
+  clearInput(){
+    this.inputElement.nativeElement.value =''
   }
 }

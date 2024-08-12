@@ -48,12 +48,15 @@
   >
     Open dialog
   </button>
+  <ul>
+    <li class='py-3 border border-slate-200 w-56 pl-5 rounded my-2 hover:bg-slate-100 hover:shadow hover:cursor-pointer ' *ngFor="let elem of elemList">{{elem}}</li>
+  </ul>
+
   <!-- <div
     [@openClose]="isOpen ? 'open' : 'closed'"
     class="fixed right-5 bottom-5 w-full max-w-56 h-20 bg-slate-100 shadow m-5 rounded-lg flex items-center justify-start"
   >
     <p class="p-3 font-medium font-inter">{{ toastMsg }}</p>
   </div> -->
-
 </div>
-  <app-reusable-dialog></app-reusable-dialog>
+<app-reusable-dialog [elemList]="elemList"></app-reusable-dialog>
