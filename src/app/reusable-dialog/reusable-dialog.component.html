@@ -1,0 +1,98 @@
+<!-- <div
+  
+  [@openBackdrop]="isDropShadowOpen ? 'open' : 'closed'"
+  class="w-full items-center h-full justify-center flex bg-black bg-opacity-15"
+>
+  <div
+    [@openDialog]="isDialogOpen ? 'open' : 'closed'"
+    class="flex flex-col shadow rounded-lg items-center justify-center bg-white w-[500px] h-[350px] z-20"
+  >
+    <p>test</p>
+    <button (click)="handleClose()">close</button>
+  </div>
+</div> -->
+<!-- <div
+  [@openBackdrop]="isDropShadowOpen ? 'open' : 'closed'"
+  (click)="handleClose()"
+  class="fixed w-full h-full bg-black bg-opacity-20 z-20 flex items-center justify-center"
+></div>
+<div class="w-full h-full flex items-center justify-center">
+  <div
+    [@openDialog]="isDialogOpen ? 'open' : 'closed'"
+    class="fixed z-30 bg-white w-96 h-56 rounded-lg shadow items-center flex flex-col justify-center p-5"
+  >
+    test
+  </div>
+</div> -->
+
+<!-- <button
+      (click)="handleCloseDialog()"
+      class="hover:bg-slate-100 bg-transparent rounded p-1 out items-center justify-center flex duration-100 ease-in absolute top-2 right-2"
+    >
+      <mat-icon>close</mat-icon>
+    </button> -->
+
+<!-- <p class="text-xl mb-5">Upload Input</p> -->
+<!-- <input
+      [(ngModel)]="inputText"
+      (keyup.enter)="handleSave()"
+      (change)="handleInput($event)"
+      class="rounded-lg border border-slate-300 h-10 w-full px-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
+      type="text"
+    />
+
+    <button
+      (click)="handleSave()"
+      class="px-8 py-1 absolute bottom-5 bg-blue-600 rounded-lg hover:bg-blue-500 hover:shadow text-white duration-100 ease-in-out"
+    >
+      Save
+    </button> -->
+<!-- Backdrop -->
+<div *ngIf="isOpen" (click)="closeDialog()" class="backdrop">
+  <div class="dialog-box">
+    <!-- Dialog Content -->
+    <p>Content</p>
+    <button (click)="closeDialog()" class="close-btn">Close</button>
+  </div>
+</div>
+
+<!-- Dialog Box -->
+<!-- <div class="w-full h-full flex items-center justify-center"> -->
+
+<!-- </div> -->
+
+<style>
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.10);
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .dialog-box {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    width: 400px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  .close-btn{
+    background-color: rgb(81, 142, 255);
+    width: 90px;
+    height: 35px;
+    margin: 5px;
+    border-radius: 5px;
+color: white;
+
+  }
+</style>
