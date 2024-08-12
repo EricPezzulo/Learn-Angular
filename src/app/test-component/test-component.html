@@ -1,39 +1,4 @@
-<div
-  class="min-h-screen h-full w-full items-center justify-center flex flex-col"
->
-  <!-- <div
-    [@openDropShadow]="isDropShadowOpen ? 'open' : 'closed'"
-    (click)="handleCloseDialog()"
-    class="fixed w-full h-full bg-black bg-opacity-20 z-20"
-  ></div> 
-
-   <div
-    [@openDialog]="isDialogOpen ? 'open' : 'closed'"
-    class="fixed z-30 bg-white w-96 h-56 rounded-lg shadow items-center flex flex-col justify-center p-5"
-  >
-    <button
-      (click)="handleCloseDialog()"
-      class="hover:bg-slate-100 bg-transparent rounded p-1 out items-center justify-center flex duration-100 ease-in absolute top-2 right-2"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-
-    <p class="text-xl mb-5">Upload Input</p>
-    <input
-      [(ngModel)]="inputText"
-      (keyup.enter)="handleSave()"
-      (change)="handleInput($event)"
-      class="rounded-lg border border-slate-300 h-10 w-full px-2 focus:ring-2 focus:ring-blue-500 focus:outline-none mb-3"
-      type="text"
-    />
-
-    <button
-      (click)="handleSave()"
-      class="px-8 py-1 absolute bottom-5 bg-blue-600 rounded-lg hover:bg-blue-500 hover:shadow text-white duration-100 ease-in-out"
-    >
-      Save
-    </button>
-  </div> -->
+<div class="min-h-screen h-full w-full items-center flex flex-col pt-10">
   <p class="text-3xl font-inter font-medium p-2">Trying Angular animations</p>
 
   <button
@@ -48,28 +13,46 @@
   >
     Open dialog
   </button>
-  <ul class='relative top-10'>
-    
+  <ul class="">
     <li
-    @addItem
-        class='py-3 border border-slate-200 w-56 px-3 rounded my-2 hover:shadow hover:cursor-pointer ' *ngFor="let elem of elemList">
-        <div class='flex justify-between items-center'>
-          
-          <p>
-            {{elem}}
-          </p>
-          <button type='button' (click)="deleteElem(elem)" class="bg-white hover:bg-slate-100 p-1 w-fit flex itmes-center ">
-            <mat-icon>delete</mat-icon>
+      @addItem
+      class="py-3 border border-slate-200 w-80 px-3 rounded-md my-2 hover:shadow hover:cursor-pointer"
+      *ngFor="let elem of elemList"
+    >
+      <div class="flex justify-between items-center">
+        <input class="checkbox" type="checkbox" value="{{elem.completed}}" (change)="handleStatus(elem.id)"/>
+        <p id='task'>{{elem.item}}</p>
+        <!-- <p>{{elem.id}}</p> -->
+        <button
+          type="button"
+          (click)="deleteElem(elem.id)"
+          class="bg-white p-1 w-fit flex hover:bg-slate-100 items-center text-slate-500"
+        >
+          <mat-icon>delete</mat-icon>
         </button>
-        </div>
-      </li>
+      </div>
+    </li>
   </ul>
-
-  <!-- <div
-    [@openClose]="isOpen ? 'open' : 'closed'"
-    class="fixed right-5 bottom-5 w-full max-w-56 h-20 bg-slate-100 shadow m-5 rounded-lg flex items-center justify-start"
-  >
-    <p class="p-3 font-medium font-inter">{{ toastMsg }}</p>
-  </div> -->
 </div>
 <app-reusable-dialog [elemList]="elemList"></app-reusable-dialog>
+
+<style>
+  .checkbox:active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(230, 54, 230);
+    border-radius: 2px;
+    width: 20px;
+    height: 20px;
+  }
+  .checkbox{
+    background-color: rgb(255, 255, 255);
+    color: rgb(230, 54, 230);
+    border-radius: 2px;
+    width: 20px;
+    height: 20px;
+  }
+  .elem-text-complete {
+    text-decoration: line-through;
+    color: rgb(145, 145, 145);
+  }
+</style>
