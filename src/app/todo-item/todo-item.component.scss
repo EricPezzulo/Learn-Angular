@@ -1,0 +1,53 @@
+$border-color: #d2d2d2;
+$shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+
+.todo-item-container {
+  padding: 10px;
+  border: 1px solid $border-color;
+  width: 350px;
+  border-radius: 10px;
+  margin: 15px 0px 15px 0px;
+  transition: box-shadow 200ms ease-in;
+  
+}
+.todo-item-container:hover {
+  box-shadow: $shadow;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deleteButton{
+    background-color: white;
+    padding:5px;
+    width: fit-content;
+    display:flex; 
+    align-items: center;
+    color: #818181;
+    border-radius: 5px;
+}
+.deleteButton:hover{
+    background-color: #eeeeee;
+}
+.checkbox {
+  background-color: rgb(255, 255, 255);
+  color: rgb(230, 54, 230);
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+}
+.checkbox:hover {
+  cursor: pointer;
+}
+.elem-text-complete {
+  text-decoration: line-through;
+  color: rgb(145, 145, 145);
+}
+.elem-text {
+  color: black;
+  text-decoration: none;
+}

@@ -14,15 +14,24 @@
     Open dialog
   </button>
   <ul class="">
-    <li
+    <!-- <li
       @addItem
-      class="py-3 border border-slate-200 w-80 px-3 rounded-md my-2 hover:shadow hover:cursor-pointer"
+      class="py-3 border border-slate-200 w-80 px-3 rounded-md my-2 hover:shadow"
       *ngFor="let elem of elemList"
     >
       <div class="flex justify-between items-center">
-        <input class="checkbox" type="checkbox" value="{{elem.completed}}" (change)="handleStatus(elem.id)"/>
-        <p id='task'>{{elem.item}}</p>
-        <!-- <p>{{elem.id}}</p> -->
+        <input
+          class="checkbox"
+          type="checkbox"
+          value="{{elem.completed}}"
+          (change)="handleStatus(elem.id)"
+        />
+
+        <p
+          [ngClass]="elem.completed ? 'elem-text-complete': 'elem-text'"
+        >
+          {{elem.item}}
+        </p>
         <button
           type="button"
           (click)="deleteElem(elem.id)"
@@ -31,7 +40,8 @@
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-    </li>
+    </li> -->
+    <app-todo-item [elemList]="elemList"></app-todo-item>
   </ul>
 </div>
 <app-reusable-dialog [elemList]="elemList"></app-reusable-dialog>
@@ -44,15 +54,5 @@
     width: 20px;
     height: 20px;
   }
-  .checkbox{
-    background-color: rgb(255, 255, 255);
-    color: rgb(230, 54, 230);
-    border-radius: 2px;
-    width: 20px;
-    height: 20px;
-  }
-  .elem-text-complete {
-    text-decoration: line-through;
-    color: rgb(145, 145, 145);
-  }
+ 
 </style>

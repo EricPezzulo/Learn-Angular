@@ -1,0 +1,25 @@
+<li
+  @addItem
+  class="todo-item-container"
+  *ngFor="let elem of elemList"
+>
+  <div class="item-container">
+    <input
+      class="checkbox"
+      type="checkbox"
+      value="{{ elem.completed }}"
+      (change)="handleStatus(elem.id)"
+    />
+
+    <p [ngClass]="elem.completed ? 'elem-text-complete' : 'elem-text'">
+      {{ elem.item }}
+    </p>
+    <button
+      type="button"
+      (click)="deleteElem(elem.id)"
+      class="deleteButton"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</li>
