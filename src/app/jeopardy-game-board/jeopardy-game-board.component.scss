@@ -1,3 +1,12 @@
+$SteelBlue: #2D7DD2;
+$LapisLazuil: #225F9E;
+$IndigoDye: #1D5084;
+$Black: #000;
+$Maize: #FFE74C;
+$AshGray:#B0C0BC;
+$Snow: #FFFBFF;
+
+
 html,
 body,
 div {
@@ -18,7 +27,7 @@ table {
   height: 100%;
   flex-grow: 1;
   border-collapse: collapse;
-  background: #5871ff;
+  background: $SteelBlue;
   table-layout: fixed;
 }
 
@@ -34,7 +43,7 @@ td,
 .category-title {
   width: 100%;
   height: 100%;
-  border: 1px solid rgb(219, 219, 219);
+  border: 1px solid $Snow;
   text-align: center;
   vertical-align: middle;
   display: flex;
@@ -47,7 +56,7 @@ tr {
     font-size: 1.5rem;
     font-weight: 600;
     font-family: "Inter", sans-serif;
-    color: rgb(255, 255, 0);
+    color: $Maize;
   }
 }
 tbody {

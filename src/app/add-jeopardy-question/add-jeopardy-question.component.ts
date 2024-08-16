@@ -52,11 +52,12 @@ export class AddJeopardyQuestionComponent {
   }
 
   @Input() isEditCategoryNameView!: boolean;
-
+  @Input() isEditQuestionView!:boolean;
   openDialog() {
     this.isBackdropOpen = true;
     this.isOpen = true;
     this.focusInput();
+   
     console.log(this.isEditCategoryNameView);
   }
   closeDialog() {
@@ -83,6 +84,7 @@ export class AddJeopardyQuestionComponent {
     // console.log(this.elemList)
   }
   clearInput() {
-    this.inputElement.nativeElement.value = '';
+    if(this.inputElement){
+    this.inputElement.nativeElement.value = '';}
   }
 }

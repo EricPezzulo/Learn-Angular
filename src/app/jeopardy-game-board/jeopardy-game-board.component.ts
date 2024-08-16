@@ -52,7 +52,7 @@ export class JeopardyGameBoardComponent {
   onEditCategoryNameView() {
     this.isEditCategoryNameView = true;
     this.isEditQuestionView = false;
-    console.log(this.isEditCategoryNameView);
+    // console.log(this.isEditCategoryNameView);
   }
 
   onEditQuestionView() {
@@ -63,9 +63,15 @@ export class JeopardyGameBoardComponent {
   editTableCell(tableCell: any) {
     // if object value == 0 then open category view
     if (Object.entries(tableCell)[0][1] === 0) {
+      this.onEditCategoryNameView()
     }
-    // open dialog
+    if(Object.entries(tableCell)[0][1]!==0){
+      this.onEditQuestionView()
+    }
+
+    
     this.inputPrompt.openDialog();
+  
     // if (this.promptInput) {
     //   this.gameData.categories[0].categoryName = this.promptInput;
     // }

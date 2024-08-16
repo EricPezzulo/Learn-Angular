@@ -6,7 +6,7 @@
   <div
     [@openDialog]="isOpen ? 'open' : 'closed'"
     (click)="$event.stopPropagation()"
-    [ngClass]="isEditCategoryNameView ? 'dialog-box-category' : ''"
+    class='dialog-box-category'
   >
     <div *ngIf="isEditCategoryNameView">
       <div class="category-container">
@@ -23,6 +23,15 @@
         />
         <button (click)="submitCategory()" class="submit-btn">Submit</button>
       </div>
+    </div>
+    <div *ngIf="isEditQuestionView">
+      <p>Question:</p>
+      <p>Possible answers:</p>
+      <p>A:</p>
+      <p>B:</p>
+      <p>C:</p>
+      <p>D:</p>
+
     </div>
 
     <!-- <p>Add Jeopardy Question to "CategoryX, ValueX"</p>
