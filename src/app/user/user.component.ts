@@ -17,6 +17,7 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
   templateUrl: './user.component.html',
+  styleUrl: './user.component.scss',
 })
 export class UserComponent {
   dialogOpen: boolean = false;

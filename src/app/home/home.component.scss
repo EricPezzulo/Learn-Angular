@@ -1,0 +1,125 @@
+main {
+  padding: 1.5rem;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gamenight-title { 
+  font-weight: 800;
+  font-size: 3rem;
+  font-family: "Inter", sans-serif;
+}
+.top-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.users-container {
+  padding: 1.5rem;
+  margin: 0.5 rem;
+  display: grid;
+  grid-template-columns: 1;
+  gap: 2 rem;
+}
+
+.game-option-container {
+  height: 10rem;
+  width: 20rem;
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgb(220, 220, 220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:1rem;
+  position: relative;
+  overflow: hidden;
+}
+.game-option-container:hover {
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  // background-image: url('/jeopardy.png');
+  background-size: cover;
+  background-position: center;
+  
+}
+
+
+.game-option-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 200ms ease-in;
+  z-index: 0; /* Ensures the background is behind any other content in the container */
+  border-radius: 15px; /* Matches the border-radius of the container */
+}
+
+.game-option-container:hover::before {
+  opacity: 1; /* Fades in the background image on hover */
+}
+
+.jeopardy-background::before {
+  background-image: url('/jeopardy.png');
+}
+
+.trivia-background::before {
+  background-image: url('/trivia.jpeg');
+}
+
+.war-background::before {
+  background-image: url('/war.jpeg');
+}
+
+.game-option-content-container {
+ text-align: center;
+}
+.game-option-title { 
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: rgb(100, 100, 100)
+}
+.game-option-container:hover .game-option-title { 
+  color: transparent;
+  transition: all 200ms ease-in;
+  
+}
+
+
+@media (min-width: 420px) {
+  .users-container {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .users-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+@media (min-width: 1020px) {
+  .users-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}

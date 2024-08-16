@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ReusableDialogComponent } from '../reusable-dialog/reusable-dialog.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 @Component({
-  selector: 'app-test-component',
+  selector: 'app-todos-component',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,9 +15,9 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
     NgClass,
     TodoItemComponent,
   ],
-  templateUrl: './test-component.html',
+  templateUrl: './todos-component.html',
 })
-export class TestComponent {
+export class TodosComponent {
   isOpen: boolean = false;
   isDialogOpen: boolean = false;
   isDropShadowOpen: boolean = false;

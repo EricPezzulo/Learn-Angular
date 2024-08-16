@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+caption {
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+}
+th {
+  width: 10rem;
+  height: 8rem;
+  background-color: rgb(115, 185, 255);
+  border: 1px solid black;
+  font-size: 1rem;
+}
+th:hover {
+  background-color: rgb(85, 156, 227);
+  transition: all ease-in-out 100ms;
+  font-size: 1.25rem;
+}
+
+.category-titles:hover {
+  width: 10rem;
+  height: 5rem;
+  background-color: rgb(115, 185, 255);
+  font-size: 1rem;
+}
+.category-titles {
+    height: 5rem;
+}

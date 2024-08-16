@@ -14,33 +14,7 @@
     Open dialog
   </button>
   <ul class="">
-    <!-- <li
-      @addItem
-      class="py-3 border border-slate-200 w-80 px-3 rounded-md my-2 hover:shadow"
-      *ngFor="let elem of elemList"
-    >
-      <div class="flex justify-between items-center">
-        <input
-          class="checkbox"
-          type="checkbox"
-          value="{{elem.completed}}"
-          (change)="handleStatus(elem.id)"
-        />
-
-        <p
-          [ngClass]="elem.completed ? 'elem-text-complete': 'elem-text'"
-        >
-          {{elem.item}}
-        </p>
-        <button
-          type="button"
-          (click)="deleteElem(elem.id)"
-          class="bg-white p-1 w-fit flex hover:bg-slate-100 items-center text-slate-500"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </li> -->
+   
     <app-todo-item [elemList]="elemList"></app-todo-item>
   </ul>
 </div>

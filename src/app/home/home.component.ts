@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { DialogComponent } from '../dialog/dialog.component';
 import { UserData } from '../user-data';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
 import { ProfileService } from '../profile.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 @Component({
@@ -19,7 +18,7 @@ import { AddUserComponent } from '../add-user/add-user.component';
     AddUserComponent,
   ],
   templateUrl: './home.component.html',
-  // styleUrl: './home.component.css',
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   users: UserData[] = [];

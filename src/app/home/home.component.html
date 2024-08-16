@@ -1,11 +1,31 @@
-<main class="p-5 min-h-screen w-full bg-white flex flex-col items-center">
-  <div class="flex flex-col">
-    <h2 class="font-inter font-semibold text-4xl">The BOYS</h2>
+<main>
+  <!-- <div class="top-container">
+    <h2>The BOYS</h2>
   </div>
-  <div>
-    <app-add-user [users]="users"></app-add-user>
-  </div>
-  <div class="p-5 m-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  <app-add-user [users]="users"></app-add-user>
+  <div class="users-container">
     <app-user [user]="user" *ngFor="let user of users"></app-user>
+  </div> -->
+
+  <div>
+    <p class="gamenight-title">GAMENIGHT</p>
   </div>
+  <a routerLink="/jeopardy">
+     <button type="button" class="game-option-container jeopardy-background">
+    <div class="game-option-content-container">
+      <p class="game-option-title">Jeopardy</p>
+    </div>
+  </button>
+  </a>
+ 
+  <button type="button" class="game-option-container trivia-background">
+    <div class="game-option-content-container">
+      <p class="game-option-title">Trivia</p>
+    </div>
+  </button>
+  <button type="button" class="game-option-container war-background">
+    <div class="game-option-content-container">
+      <p class="game-option-title">War</p>
+    </div>
+  </button>
 </main>

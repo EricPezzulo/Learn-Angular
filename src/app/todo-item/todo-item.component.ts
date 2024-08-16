@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { elemListType } from '../test-component/test-component';
+import { elemListType } from '../todos-component/todos-component';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate } from '@angular/animations';
 

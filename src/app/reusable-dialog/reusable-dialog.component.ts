@@ -8,7 +8,7 @@ import {
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
-import { elemListType } from '../test-component/test-component';
+import { elemListType } from '../todos-component/todos-component';
 
 @Component({
   selector: 'app-reusable-dialog',
