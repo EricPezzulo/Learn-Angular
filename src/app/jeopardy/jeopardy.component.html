@@ -1,55 +1,63 @@
-<div class='container'>
+<div class="container">
   <table>
     <caption>
       JEOPARDY
     </caption>
-    <thead>
-      <tr >
-        <th class='category-titles'>Category 1</th>
-        <th class='category-titles's>Category 2</th>
-        <th class='category-titles'>Category 3</th>
-        <th class='category-titles'>Category 4</th>
-        <th class='category-titles'>Category 5</th>
-      </tr>
-    </thead>
+    <!-- <thead></thead> -->
     <tbody>
       <tr>
-        <th (click)="openQuestion()">$100</th>
-        <th>$100</th>
-        <th>$100</th>
-        <th>$100</th>
-        <th>$100</th>
+        <th class="category-title">Category 1</th>
+        <th class="category-title">Category 2</th>
+        <th class="category-title">Category 3</th>
+        <th class="category-title">Category 4</th>
+        <th class="category-title">Category 5</th>
+      </tr>
+      <tr>
+        <td (click)="openQuestion()">$100</td>
+        <td>$100</td>
+        <td>$100</td>
+        <td>$100</td>
+        <td>$100</td>
       </tr>
 
       <tr>
-        <th>$200</th>
-        <th>$200</th>
-        <th>$200</th>
-        <th>$200</th>
-        <th>$200</th>
+        <td>$200</td>
+        <td>$200</td>
+        <td>$200</td>
+        <td>$200</td>
+        <td>$200</td>
       </tr>
       <tr>
-        <th>$300</th>
-        <th>$300</th>
-        <th>$300</th>
-        <th>$300</th>
-        <th>$300</th>
+        <td>$300</td>
+        <td>$300</td>
+        <td>$300</td>
+        <td>$300</td>
+        <td>$300</td>
       </tr>
       <tr>
-        <th>$400</th>
-        <th>$400</th>
-        <th>$400</th>
-        <th>$400</th>
-        <th>$400</th>
+        <td>$400</td>
+        <td>$400</td>
+        <td>$400</td>
+        <td>$400</td>
+        <td>$400</td>
       </tr>
       <tr>
-        <th>$500</th>
-        <th>$500</th>
-        <th>$500</th>
-        <th>$500</th>
-        <th>$500</th>
+        <td>$500</td>
+        <td>$500</td>
+        <td>$500</td>
+        <td>$500</td>
+        <td>$500</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Team NAME: 400pts</th>
+        <td class="team-score">
+          <p>A TEAM</p>
+          <p>$11,300</p>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
-<app-reusable-dialog></app-reusable-dialog>
+<!-- <app-reusable-dialog></app-reusable-dialog> -->
