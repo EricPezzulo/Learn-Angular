@@ -1,63 +1,65 @@
 <div class="container">
-  <table>
-    <caption>
-      JEOPARDY
-    </caption>
-    <!-- <thead></thead> -->
-    <tbody>
-      <tr>
-        <th class="category-title">Category 1</th>
-        <th class="category-title">Category 2</th>
-        <th class="category-title">Category 3</th>
-        <th class="category-title">Category 4</th>
-        <th class="category-title">Category 5</th>
-      </tr>
-      <tr>
-        <td (click)="openQuestion()">$100</td>
-        <td>$100</td>
-        <td>$100</td>
-        <td>$100</td>
-        <td>$100</td>
-      </tr>
+  <div *ngIf="currentTab === 'chose-options'" class="button-container">
+    <button
+      (click)="choseGameOption('new-game')"
+      value="new-game"
+      type="button"
+      class="button"
+    >
+      <p>New Game</p>
+    </button>
+    <button
+      (click)="choseGameOption('saved-game')"
+      value="saved-game"
+      type="button"
+      class="button"
+    >
+      Saved Game
+    </button>
+  </div>
 
-      <tr>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
-      </tr>
-      <tr>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
-      </tr>
-      <tr>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
-      </tr>
-      <tr>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th scope="row">Team NAME: 400pts</th>
-        <td class="team-score">
-          <p>A TEAM</p>
-          <p>$11,300</p>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+  <app-jeopardy-game-board
+    *ngIf="currentTab === 'new-game'"
+    (goBack)="goBack()"
+  ></app-jeopardy-game-board>
+
+  <div *ngIf="currentTab === 'saved-game'">
+    <p>Choose saved game</p>
+    <button (click)="goBack()">back</button>
+  </div>
 </div>
-<!-- <app-reusable-dialog></app-reusable-dialog> -->
+
+<!-- <app-add-jeopardy-question></app-add-jeopardy-question -->
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .button-container {
+    display: grid;
+    place-items: center;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10;
+    width: 100%;
+    padding-block: 1rem;
+    height: 100%;
+  }
+
+  .button {
+    width: 10rem;
+    height: 5rem;
+    border-radius: 10px;
+    background: whitesmoke;
+    border: 1px solid rgb(233, 233, 233);
+  }
+  button:hover {
+    background: rgb(239, 240, 245);
+    font-size: 1.05rem;
+    transition: all 150ms ease-in-out;
+    font-weight: 500;
+  }
+</style>

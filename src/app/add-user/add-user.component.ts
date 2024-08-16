@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  inject,
-  input,
-  Input,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
 import { UserData } from '../user-data';
 import { MatIconModule } from '@angular/material/icon';
 

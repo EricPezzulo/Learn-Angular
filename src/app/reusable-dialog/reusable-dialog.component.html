@@ -8,8 +8,15 @@
     (click)="$event.stopPropagation()"
     class="dialog-box"
   >
-    <p>Add an item to the todo list</p>
-    <input (keyup.enter)='submit()' #inputElement type="text" class="input" (change)="handleChange($event)" />
+    <p>Add Jeopardy Question to "CategoryX, ValueX"</p>
+    <input
+      (keyup.enter)="submit()"
+      #inputElement
+      type="text"
+      class="input"
+      (change)="handleChange($event)"
+    />
+    <p></p>
     <button (click)="closeDialog()" class="close-btn">Close</button>
     <button (click)="submit()" class="submit-btn">Submit</button>
   </div>
