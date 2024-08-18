@@ -10,49 +10,55 @@
     <!-- <thead></thead> -->
     <tbody>
       <tr>
-        <th (click)="editTableCell({ A: 0 })" class="category-title">
-          Category 1
-        </th>
-        <th class="category-title">Category 2</th>
-        <th class="category-title">Category 3</th>
-        <th class="category-title">Category 4</th>
-        <th class="category-title">Category 5</th>
+        @for(cell of gameData.slice(0,5); track $index){
+          <th (click)="editTableCell(cell.row, cell.column)" class='category-title'>
+            {{cell?.categoryName}}
+          </th>
+        }
       </tr>
       <tr>
-        <td (click)="editTableCell({ A: 1 })">$100</td>
-        <td (click)="editTableCell({ A: 2 })">$100</td>
-        <td (click)="editTableCell({ A: 3 })">$100</td>
-        <td (click)="editTableCell({ A: 4 })">$100</td>
-        <td (click)="editTableCell({ A: 5 })">$100</td>
+        @for(cell of gameData.slice(5,10); track $index){
+        <td (click)="editTableCell(cell.row, cell.column)">
+    
+         <p>
+          ${{cell?.pointValue}}
+         </p>
+        </td>
+        }
       </tr>
 
       <tr>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
-        <td>$200</td>
+        @for(cell of gameData.slice(10,15); track $index){
+        <td (click)="editTableCell(cell.row, cell.column)">
+         
+        <p>${{cell?.pointValue}}</p>
+        </td>
+        }
+
+  
       </tr>
       <tr>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
-        <td>$300</td>
+        @for(cell of gameData.slice(15,20); track $index){
+        <td (click)="editTableCell(cell.row, cell.column)">
+       
+        <p>${{cell?.pointValue}}</p>
+        </td>
+        }
       </tr>
       <tr>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
-        <td>$400</td>
+       @for(cell of gameData.slice(20,25); track $index){
+        <td (click)="editTableCell(cell.row, cell.column)">
+         <p>${{cell?.pointValue}}</p>
+        </td>
+        }
       </tr>
       <tr>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
-        <td>$500</td>
+       @for(cell of gameData.slice(25,30); track $index){
+        <td (click)="editTableCell(cell.row, cell.column)">
+         <p>${{cell?.pointValue}}</p>
+          
+        </td>
+        }
       </tr>
     </tbody>
     <tfoot>
@@ -69,4 +75,7 @@
 <app-add-jeopardy-question
   [isEditCategoryNameView]="isEditCategoryNameView"
   [isEditQuestionView]="isEditQuestionView"
+  [promptInput]="promptInput"
+  (updateInputEvent)="receiveNewCategory($event)"
+  [currentTableCell]="currentTableCell"
 ></app-add-jeopardy-question>

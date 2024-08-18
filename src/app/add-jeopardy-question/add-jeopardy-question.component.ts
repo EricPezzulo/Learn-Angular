@@ -2,6 +2,8 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
+  input,
   Input,
   Output,
   ViewChild,
@@ -15,6 +17,7 @@ import {
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
+import { GameDataService } from '../gamedata.service';
 
 @Component({
   selector: 'app-add-jeopardy-question',
@@ -36,6 +39,7 @@ import { v4 as uuidv4 } from 'uuid';
   ],
 })
 export class AddJeopardyQuestionComponent {
+   GameDataService: GameDataService = inject(GameDataService);
   isOpen: boolean = false;
   isBackdropOpen: boolean = false;
 
@@ -50,14 +54,17 @@ export class AddJeopardyQuestionComponent {
       this.inputElement.nativeElement.focus();
     }
   }
+  @Input() currentTableCell!:any
 
   @Input() isEditCategoryNameView!: boolean;
-  @Input() isEditQuestionView!:boolean;
+  @Input() isEditQuestionView!: boolean;
+  @Input() promptInput!:string
+  @Output() updateInputEvent: EventEmitter<string> = new EventEmitter<string>
   openDialog() {
     this.isBackdropOpen = true;
     this.isOpen = true;
     this.focusInput();
-   
+
     console.log(this.isEditCategoryNameView);
   }
   closeDialog() {
@@ -71,7 +78,40 @@ export class AddJeopardyQuestionComponent {
   }
 
   submitCategory() {
-    console.log(this.inputValue);
+    // console.log(this.inputValue);
+    this.updateInputEvent.emit(this.inputValue)
+    
+
+//
+      // wait for submited promptInput data.
+      // maybe move this logic to other dialog file?
+      // find table cell to edit
+      console.log(Object.keys(this.currentTableCell))
+      let categoryLetter = Object.keys(this.currentTableCell)[0]
+      let categoryNumber = Object.values(this.currentTableCell)[0];
+      console.log(categoryLetter,categoryNumber)
+      //turn this into service
+      const data = {Row:categoryLetter, Column: categoryNumber, input: this.promptInput}
+      this.GameDataService.addCategory(data)
+
+      // let cellToEdit = this.gameData.categories.find(
+      //   (x) => x.categoryId === categoryNumber
+      // );
+
+     
+
+      // if (cellToEdit) {
+      //   cellToEdit.categoryName = this.promptInput;
+      //   console.log({input: this.promptInput, cellToEdit})
+      // } else {
+      //   console.log('cant find cell');
+      // }
+      // console.log(this.gameData)
+    
+    // if (Object.entries(tableCell)[0][1] !== 0) {
+    //   this.onEditQuestionView();
+    // }
+//
     this.closeDialog();
     this.clearInput();
   }
@@ -84,7 +124,8 @@ export class AddJeopardyQuestionComponent {
     // console.log(this.elemList)
   }
   clearInput() {
-    if(this.inputElement){
-    this.inputElement.nativeElement.value = '';}
+    if (this.inputElement) {
+      this.inputElement.nativeElement.value = '';
+    }
   }
 }

@@ -6,153 +6,125 @@
   <div
     [@openDialog]="isOpen ? 'open' : 'closed'"
     (click)="$event.stopPropagation()"
-    class='dialog-box-category'
+    class="dialog-box-category"
   >
-    <div *ngIf="isEditCategoryNameView">
-      <div class="category-container">
-        <label class="category-name-input-label" for="cateogryNameInput"
-          >Category name:
-        </label>
-        <input
-          (keyup.enter)="submitCategory()"
-          (change)="handleChange($event)"
-          #inputElement
-          class="categoryNameInput"
-          type="text"
-          name="cateogryNameInput"
-        />
-        <button (click)="submitCategory()" class="submit-btn">Submit</button>
-      </div>
+    @if(isEditCategoryNameView){
+    <div class="category-container">
+      <label class="category-name-input-label" for="cateogryNameInput"
+        >Category name:
+      </label>
+      <input
+        (keyup.enter)="submitCategory()"
+        (change)="handleChange($event)"
+        #inputElement
+        class="categoryNameInput"
+        type="text"
+        name="cateogryNameInput"
+      />
+      <button (click)="submitCategory()" class="submit-btn">Submit</button>
     </div>
-    <div *ngIf="isEditQuestionView">
+
+    } 
+    @if(isEditQuestionView){
+    <div>
       <p>Question:</p>
       <p>Possible answers:</p>
       <p>A:</p>
       <p>B:</p>
       <p>C:</p>
       <p>D:</p>
-
     </div>
-
-    <!-- <p>Add Jeopardy Question to "CategoryX, ValueX"</p>
-      <input
-        (keyup.enter)="submit()"
-        #inputElement
-        type="text"
-        class="input"
-        (change)="handleChange($event)"
-      />
-      <p>Add options</p>
-      <div class="grid grid-cols-2">
-        <div class="flex">
-          <p>A.</p>
-          <input class="w-24" type="text" placeholder="test" />
-        </div>
-        <div class="flex">
-          <p>B.</p>
-          <input class="w-24" type="text" placeholder="test" />
-        </div>
-        <div class="flex">
-          <p>C.</p>
-          <input class="w-24" type="text" placeholder="test" />
-        </div>
-        <div class="flex">
-          <p>D.</p>
-          <input class="w-24" type="text" placeholder="test" />
-        </div>
-      </div>
-      <button (click)="closeDialog()" class="close-btn">Close</button>
-      <button (click)="submit()" class="submit-btn">Submit</button>
-    </div> -->
+    } 
   </div>
-
-  <style>
-    .backdrop {
-      background-color: rgba(0, 0, 0, 0.1);
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      z-index: 50;
-    }
-    .dialog-box-category {
-      background-color: rgb(255, 255, 255);
-      position: fixed;
-      width: 80%;
-      height: 150px;
-      border-radius: 10px;
-      box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-    }
-    .category-container {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .category-name-input-label {
-      font-family: "Inter", sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      padding-bottom: 0.5rem;
-    }
-    .close-btn {
-      background-color: rgb(198, 198, 198);
-      width: 90px;
-      height: 35px;
-      margin: 5px;
-      border-radius: 5px;
-      color: white;
-    }
-    .submit-btn {
-      background-color: rgb(81, 142, 255);
-      width: 90px;
-      height: 35px;
-      margin: 0.5rem;
-      border-radius: 5px;
-      color: white;
-      transition: all 300ms ease;
-      font-family: "Inter", sans-serif;
-      font-weight: 500;
-    }
-    .submit-btn:hover {
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-      background-color: rgb(45, 115, 244);
-      transition: 300ms ease ease-in;
-    }
-    .hidden {
-      z-index: -10;
-    }
-    .input {
-      margin: 5px;
-      padding: 5px;
-      width: 80%;
-      border: 1px solid rgb(229, 229, 229);
-      border-radius: 5px;
-    }
-    .input:focus {
-      outline: 2px solid rgb(16, 127, 255);
-    }
-
-    .categoryNameInput {
-      border: 1px solid rgb(196, 196, 196);
-      border-radius: 7.5px;
-      padding: 3px 5px 3px 5px;
-      margin-bottom: 0.5rem;
-    }
-    .categoryNameInput:focus {
-      outline: 1px solid rgb(86, 154, 255);
-      border: 1px solid rgb(86, 154, 255);
-      box-shadow: 0px 0px 3px 1px rgba(86, 154, 255, 1);
-    }
-  </style>
 </div>
+
+<style>
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+  }
+  .dialog-box-category {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    width: 80%;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  .category-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-name-input-label {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+  }
+  .close-btn {
+    background-color: rgb(198, 198, 198);
+    width: 90px;
+    height: 35px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+  }
+  .submit-btn {
+    background-color: rgb(81, 142, 255);
+    width: 90px;
+    height: 35px;
+    margin: 0.5rem;
+    border-radius: 5px;
+    color: white;
+    transition: all 300ms ease;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+  }
+  .submit-btn:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: rgb(45, 115, 244);
+    transition: 300ms ease ease-in;
+  }
+  .hidden {
+    z-index: -10;
+  }
+  .input {
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 5px;
+  }
+  .input:focus {
+    outline: 2px solid rgb(16, 127, 255);
+  }
+
+  .categoryNameInput {
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 7.5px;
+    padding: 3px 5px 3px 5px;
+    margin-bottom: 0.5rem;
+  }
+  .categoryNameInput:focus {
+    outline: 1px solid rgb(86, 154, 255);
+    border: 1px solid rgb(86, 154, 255);
+    box-shadow: 0px 0px 3px 1px rgba(86, 154, 255, 1);
+  }
+
+</style>
