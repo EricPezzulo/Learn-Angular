@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddJeopardyQuestionComponent } from '../add-jeopardy-question/add-jeopardy-question.component';
 import { inject } from '@angular/core';
 import { GameBoardData, GameDataService } from '../gamedata.service';
+import { table } from 'node:console';
 
 @Component({
   selector: 'app-jeopardy-game-board',
@@ -25,7 +26,7 @@ export class JeopardyGameBoardComponent {
 
   gameData!: GameBoardData[];
 
-  constructor(){
+  constructor() {
     this.gameData = this.GameDataService.getAllGameData();
   }
 
@@ -69,10 +70,11 @@ export class JeopardyGameBoardComponent {
   receiveNewCategory($event: any) {
     this.promptInput = $event;
   }
-  editTableCell(row: number, column:string) {
-    console.log(this.gameData);
-    // THIS NEEDS TO GET FIXED, its logging "row" instead of the number 
-    const tableCell = {row: column}
+  editTableCell(row: number, column: string) {
+    // console.log(this.gameData);
+    const tableCell = { [row]: column };
+
+    // console.log(row, column, tableCell);
     this.currentTableCell = tableCell;
     // if object value == 0 then open category view
     if (row === 0) {
@@ -80,24 +82,13 @@ export class JeopardyGameBoardComponent {
       this.onEditCategoryNameView();
       this.inputPrompt.openDialog();
 
-      // wait for submited promptInput data.
-      // maybe move this logic to other dialog file?
-      // find table cell to edit
-      // let categoryNumber = Object.values(tableCell)[0];
-      // let cellToEdit = this.gameData.categories.find(
-      //   (x) => x.categoryId === categoryNumber
-      // );
-
-      // if (cellToEdit) {
-      //   cellToEdit.categoryName = this.promptInput;
-      //   console.log({ input: this.promptInput, cellToEdit });
-      // } else {
-      //   console.log('cant find cell');
-      // }
-      // console.log(this.gameData)
+      //!move to dialog component!!!
+      const updatedCategoryData = { tableCell, categoryName: this.promptInput };
+      this.GameDataService.addCategory(updatedCategoryData);
     }
     if (row !== 0) {
       this.onEditQuestionView();
+      this.inputPrompt.openDialog();
     }
 
     // this.inputPrompt.openDialog();

@@ -65,7 +65,7 @@ export class AddJeopardyQuestionComponent {
     this.isOpen = true;
     this.focusInput();
 
-    console.log(this.isEditCategoryNameView);
+    // console.log(this.isEditCategoryNameView);
   }
   closeDialog() {
     this.isBackdropOpen = false;
@@ -86,10 +86,9 @@ export class AddJeopardyQuestionComponent {
       // wait for submited promptInput data.
       // maybe move this logic to other dialog file?
       // find table cell to edit
-      console.log(Object.keys(this.currentTableCell))
       let categoryLetter = Object.keys(this.currentTableCell)[0]
       let categoryNumber = Object.values(this.currentTableCell)[0];
-      console.log(categoryLetter,categoryNumber)
+      // console.log(categoryLetter)
       //turn this into service
       const data = {Row:categoryLetter, Column: categoryNumber, input: this.promptInput}
       this.GameDataService.addCategory(data)

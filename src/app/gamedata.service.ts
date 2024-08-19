@@ -254,15 +254,28 @@ export class GameDataService {
 
   addCategory(data: any) {
     console.log(data);
-    
-  }
+    if (data.tableCell) {
+      const column: string = Object.values(data.tableCell).toString();
+      const categoryToUpdate = this.gameData.find(
+        (x) => x.row === 0 && x.column === column
+      );
 
-  // updateCategryName(categoryId: number) {
-  //   const category = this.gameData.categories.find(
-  //     (x: any) => (x.categoryId = categoryId)
-  //   );
-  //   return category;
-  // }
+      if (categoryToUpdate) {
+        categoryToUpdate.categoryName = data.categoryName;
+      }
+
+      // const column = Object.values(data.tableCell).toString();
+
+      // console.log(categoryToUpdate)
+    }
+
+    // updateCategryName(categoryId: number) {
+    //   const category = this.gameData.categories.find(
+    //     (x: any) => (x.categoryId = categoryId)
+    //   );
+    //   return category;
+    // }
+  }
 }
 
 export interface GameData {
