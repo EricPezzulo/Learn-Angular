@@ -47,15 +47,16 @@ export class AddJeopardyQuestionComponent {
 
   @ViewChild('inputElement') inputElement!: ElementRef;
 
-  // @Input() elemList!: elemListType[];
-
+  
+//! this is not auto focusing anymore
   private focusInput() {
     if (this.inputElement) {
+      console.log('found input')
       this.inputElement.nativeElement.focus();
     }
   }
-  @Input() currentTableCell!:any
 
+  @Input() currentTableCell!:any
   @Input() isEditCategoryNameView!: boolean;
   @Input() isEditQuestionView!: boolean;
   @Input() promptInput!:string
@@ -64,8 +65,6 @@ export class AddJeopardyQuestionComponent {
     this.isBackdropOpen = true;
     this.isOpen = true;
     this.focusInput();
-
-    // console.log(this.isEditCategoryNameView);
   }
   closeDialog() {
     this.isBackdropOpen = false;
@@ -78,50 +77,17 @@ export class AddJeopardyQuestionComponent {
   }
 
   submitCategory() {
-    // console.log(this.inputValue);
     this.updateInputEvent.emit(this.inputValue)
-    
-
-//
-      // wait for submited promptInput data.
-      // maybe move this logic to other dialog file?
-      // find table cell to edit
-      let categoryLetter = Object.keys(this.currentTableCell)[0]
-      let categoryNumber = Object.values(this.currentTableCell)[0];
-      // console.log(categoryLetter)
-      //turn this into service
-      const data = {Row:categoryLetter, Column: categoryNumber, input: this.promptInput}
+         let categoryLetter = Object.keys(this.currentTableCell)[0]
+      let categoryNumber = Object.values(this.currentTableCell)[0]
+      const data = {row:categoryLetter, column: categoryNumber, input: this.inputValue}
       this.GameDataService.addCategory(data)
-
-      // let cellToEdit = this.gameData.categories.find(
-      //   (x) => x.categoryId === categoryNumber
-      // );
-
-     
-
-      // if (cellToEdit) {
-      //   cellToEdit.categoryName = this.promptInput;
-      //   console.log({input: this.promptInput, cellToEdit})
-      // } else {
-      //   console.log('cant find cell');
-      // }
-      // console.log(this.gameData)
-    
-    // if (Object.entries(tableCell)[0][1] !== 0) {
-    //   this.onEditQuestionView();
-    // }
-//
+      // console.log(this.GameDataService.getAllGameData())
     this.closeDialog();
     this.clearInput();
   }
 
-  submit() {
-    const newItem = { id: uuidv4(), item: this.inputValue, completed: false };
-    // this.elemList.push(newItem);
-    this.clearInput();
-    this.closeDialog();
-    // console.log(this.elemList)
-  }
+
   clearInput() {
     if (this.inputElement) {
       this.inputElement.nativeElement.value = '';

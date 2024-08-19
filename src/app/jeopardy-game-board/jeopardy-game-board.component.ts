@@ -30,32 +30,6 @@ export class JeopardyGameBoardComponent {
     this.gameData = this.GameDataService.getAllGameData();
   }
 
-  // gameData: GameDataType = {
-  //   categories: [
-  //     { categoryName: 'TEST', categoryId: 0 },
-  //     { categoryName: '', categoryId: 1 },
-  //     { categoryName: '', categoryId: 2 },
-  //     { categoryName: '', categoryId: 3 },
-  //     { categoryName: '', categoryId: 4 },
-  //   ],
-  // '1stRow': [
-  //   {
-  //     A1: 'hi',
-  //   },
-  //   {
-  //     B1: 'hiiii',
-  //   },
-  //   {
-  //     C1: {
-  //       value: 100,
-  //       question: 'How many letters?',
-  //       answer: { D: 14 },
-  //       options: [{ A: 10 }, { B: 12 }, { C: 3 }, { D: 14 }],
-  //     },
-  //   },
-  // ],
-  // };
-
   onEditCategoryNameView() {
     this.isEditCategoryNameView = true;
     this.isEditQuestionView = false;
@@ -73,7 +47,6 @@ export class JeopardyGameBoardComponent {
   editTableCell(row: number, column: string) {
     // console.log(this.gameData);
     const tableCell = { [row]: column };
-
     // console.log(row, column, tableCell);
     this.currentTableCell = tableCell;
     // if object value == 0 then open category view
@@ -81,22 +54,11 @@ export class JeopardyGameBoardComponent {
       // chose which dialog to display
       this.onEditCategoryNameView();
       this.inputPrompt.openDialog();
-
-      //!move to dialog component!!!
-      const updatedCategoryData = { tableCell, categoryName: this.promptInput };
-      this.GameDataService.addCategory(updatedCategoryData);
     }
     if (row !== 0) {
       this.onEditQuestionView();
       this.inputPrompt.openDialog();
     }
-
-    // this.inputPrompt.openDialog();
-
-    // if (this.promptInput) {
-    //   this.gameData.categories[0].categoryName = this.promptInput;
-    // }
-    // console.log(this.gameData);
   }
 
   onBackClick() {

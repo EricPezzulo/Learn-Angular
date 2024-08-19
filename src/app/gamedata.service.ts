@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 export class GameDataService {
   protected gameData: GameBoardData[] = [
     // categoryies -> ROW 0
-    { column: 'A', row: 0, categoryName: 'Sports' },
-    { column: 'B', row: 0, categoryName: 'Technology' },
-    { column: 'C', row: 0, categoryName: 'Music' },
-    { column: 'D', row: 0, categoryName: 'History' },
-    { column: 'E', row: 0, categoryName: 'Random' },
+    { column: 'A', row: 0, categoryName: 'Category A' },
+    { column: 'B', row: 0, categoryName: 'Category B' },
+    { column: 'C', row: 0, categoryName: 'Category C' },
+    { column: 'D', row: 0, categoryName: 'Category D' },
+    { column: 'E', row: 0, categoryName: 'Cagtegory E' },
     // $100 -> ROW 1
     {
       column: 'A',
@@ -253,28 +253,17 @@ export class GameDataService {
   // }
 
   addCategory(data: any) {
-    console.log(data);
-    if (data.tableCell) {
-      const column: string = Object.values(data.tableCell).toString();
+    if (data.column) {
+      const column: string = data.column;
+
       const categoryToUpdate = this.gameData.find(
         (x) => x.row === 0 && x.column === column
       );
-
       if (categoryToUpdate) {
-        categoryToUpdate.categoryName = data.categoryName;
+        categoryToUpdate.categoryName = data.input;
+        console.log(this.gameData);
       }
-
-      // const column = Object.values(data.tableCell).toString();
-
-      // console.log(categoryToUpdate)
     }
-
-    // updateCategryName(categoryId: number) {
-    //   const category = this.gameData.categories.find(
-    //     (x: any) => (x.categoryId = categoryId)
-    //   );
-    //   return category;
-    // }
   }
 }
 
