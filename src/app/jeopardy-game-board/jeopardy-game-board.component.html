@@ -11,52 +11,50 @@
     <tbody>
       <tr>
         @for(cell of gameData.slice(0,5); track $index){
-          <th (click)="editTableCell(cell.row, cell.column)" class='category-title'>
-            {{cell?.categoryName}}
-          </th>
+        <th
+          (click)="editTableCell(cell.row, cell.column)"
+          class="category-title"
+        >
+          {{ cell?.categoryName }}
+        </th>
         }
       </tr>
       <tr>
         @for(cell of gameData.slice(5,10); track $index){
-        <td (click)="editTableCell(cell.row, cell.column)">
-    
-         <p>
-          ${{cell?.pointValue}}
-         </p>
+        <td 
+         [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
+          (click)="editTableCell(cell.row, cell.column)"
+        >
+          <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">${{ cell?.pointValue }}</p>
         </td>
         }
       </tr>
 
       <tr>
         @for(cell of gameData.slice(10,15); track $index){
-        <td (click)="editTableCell(cell.row, cell.column)">
-         
-        <p>${{cell?.pointValue}}</p>
+        <td  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'" (click)="editTableCell(cell.row, cell.column)">
+          <p  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">${{ cell?.pointValue }}</p>
         </td>
         }
-
-  
       </tr>
       <tr>
         @for(cell of gameData.slice(15,20); track $index){
-        <td (click)="editTableCell(cell.row, cell.column)">
-       
-        <p>${{cell?.pointValue}}</p>
+        <td  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'" (click)="editTableCell(cell.row, cell.column)">
+          <p  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">${{ cell?.pointValue }}</p>
         </td>
         }
       </tr>
       <tr>
-       @for(cell of gameData.slice(20,25); track $index){
-        <td (click)="editTableCell(cell.row, cell.column)">
-         <p>${{cell?.pointValue}}</p>
+        @for(cell of gameData.slice(20,25); track $index){
+        <td  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'" (click)="editTableCell(cell.row, cell.column)">
+          <p  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">${{ cell?.pointValue }}</p>
         </td>
         }
       </tr>
       <tr>
-       @for(cell of gameData.slice(25,30); track $index){
-        <td (click)="editTableCell(cell.row, cell.column)">
-         <p>${{cell?.pointValue}}</p>
-          
+        @for(cell of gameData.slice(25,30); track $index){
+        <td  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'" (click)="editTableCell(cell.row, cell.column)">
+          <p  [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">${{ cell?.pointValue }}</p>
         </td>
         }
       </tr>

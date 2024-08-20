@@ -49,6 +49,10 @@ td,
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
+}
+.category-title {
+  color: rgb(255, 166, 0)
 }
 
 tr {
@@ -108,6 +112,20 @@ caption {
 .go-back-button:hover {
   background: rgb(228, 228, 228);
   transition: all 100ms ease;
+}
+.complete-cell{
+  color: white;
+  background-color: rgb(52, 54, 108);
+  
+}
+.not-complete-cell{
+  color: $Maize
+  
+}
+@media (min-width:600px){
+  .category-title{ 
+    font-size: 1.5rem;
+  }
 }
 
 // @media (min-width: 1024px) {

@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 export class GameDataService {
   protected gameData: GameBoardData[] = [
     // categoryies -> ROW 0
-    { column: 'A', row: 0, categoryName: 'Category A' },
-    { column: 'B', row: 0, categoryName: 'Category B' },
-    { column: 'C', row: 0, categoryName: 'Category C' },
-    { column: 'D', row: 0, categoryName: 'Category D' },
-    { column: 'E', row: 0, categoryName: 'Cagtegory E' },
+    { column: 'A', row: 0, categoryName: 'Category A', complete: false },
+    { column: 'B', row: 0, categoryName: 'Category B', complete: false },
+    { column: 'C', row: 0, categoryName: 'Category C', complete: false },
+    { column: 'D', row: 0, categoryName: 'Category D', complete: false },
+    { column: 'E', row: 0, categoryName: 'Cagtegory E', complete: false },
     // $100 -> ROW 1
     {
       column: 'A',
@@ -19,6 +19,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'B',
@@ -27,6 +28,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'C',
@@ -35,6 +37,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'D',
@@ -43,6 +46,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'E',
@@ -51,6 +55,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     // $200 -> ROW 2
     {
@@ -60,6 +65,7 @@ export class GameDataService {
       question: '7-4?',
       answer: { A: '3' },
       answerOptions: [{ A: '3' }, { B: '1' }, { C: '6' }, { D: '0' }],
+      complete: false,
     },
     {
       column: 'B',
@@ -68,6 +74,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'C',
@@ -76,6 +83,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'D',
@@ -84,6 +92,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'E',
@@ -92,6 +101,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     // $300 -> ROW 3
     {
@@ -101,6 +111,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'B',
@@ -109,6 +120,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'C',
@@ -117,6 +129,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'D',
@@ -125,6 +138,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'E',
@@ -133,6 +147,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     // $400 -> ROW 4
     {
@@ -142,6 +157,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'B',
@@ -150,6 +166,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'C',
@@ -158,6 +175,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'D',
@@ -166,6 +184,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'E',
@@ -174,6 +193,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     // $400 -> ROW 5
     {
@@ -183,6 +203,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'B',
@@ -191,6 +212,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'C',
@@ -199,6 +221,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'D',
@@ -207,6 +230,7 @@ export class GameDataService {
       question: '',
       answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
     {
       column: 'E',
@@ -215,34 +239,9 @@ export class GameDataService {
       question: '',
       answer: { A: 'lorem ipsum' },
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
+      complete: false,
     },
   ];
-
-  // protected gameData: GameData = {
-  //   categories: [
-  //     { categoryName: 'TEST', categoryId: 1 },
-  //     { categoryName: '', categoryId: 2 },
-  //     { categoryName: '', categoryId: 3 },
-  //     { categoryName: '', categoryId: 4 },
-  //     { categoryName: '', categoryId: 5 },
-  //   ],
-  // '1stRow': [
-  //   {
-  //     A1: 'hi',
-  //   },
-  //   {
-  //     B1: 'hiiii',
-  //   },
-  //   {
-  //     C1: {
-  //       value: 100,
-  //       question: 'How many letters?',
-  //       answer: { D: 14 },
-  //       options: [{ A: 10 }, { B: 12 }, { C: 3 }, { D: 14 }],
-  //     },
-  //   },
-  // ],
-  // };
 
   getAllGameData(): GameBoardData[] {
     return this.gameData;
@@ -251,6 +250,34 @@ export class GameDataService {
   // getCategory(): Categories[] {
   //   return this.gameData.categories;
   // }
+
+  addQuestion(data: any) {
+    console.log(data);
+    const questionToUpdate = this.gameData.find(
+      (x) => x.row === Number(data.row) && x.column === data.column
+    );
+
+    if (questionToUpdate?.question === '') {
+      questionToUpdate.question = data.question;
+    }
+
+    if (questionToUpdate?.answerOptions) {
+      questionToUpdate.answerOptions = [
+        { A: data.A },
+        { B: data.B },
+        { C: data.C },
+        { D: data.D },
+      ];
+    }
+    if (questionToUpdate?.answer) {
+      const idx = data.answer;
+      questionToUpdate.answer = { [data.answer]: data[idx] };
+    }
+    if (questionToUpdate?.complete === false) {
+      questionToUpdate.complete = true;
+    }
+    console.log(questionToUpdate);
+  }
 
   addCategory(data: any) {
     if (data.column) {
@@ -284,6 +311,7 @@ export interface GameBoardData {
   answer?: AnswerType;
   answerOptions?: AnswerOptions;
   pointValue?: number;
+  complete: boolean;
 }
 export type AnswerType = { [key: string]: string };
 export type AnswerOptions = AnswerType[];

@@ -39,26 +39,29 @@ export class JeopardyGameBoardComponent {
   onEditQuestionView() {
     this.isEditQuestionView = true;
     this.isEditCategoryNameView = false;
+    // console.log(this.currentTableCell);
   }
 
   receiveNewCategory($event: any) {
     this.promptInput = $event;
   }
-  editTableCell(row: number, column: string) {
+  async editTableCell(row: number, column: string) {
     // console.log(this.gameData);
     const tableCell = { [row]: column };
     // console.log(row, column, tableCell);
     this.currentTableCell = tableCell;
-    // if object value == 0 then open category view
-    if (row === 0) {
-      // chose which dialog to display
-      this.onEditCategoryNameView();
-      this.inputPrompt.openDialog();
-    }
-    if (row !== 0) {
-      this.onEditQuestionView();
-      this.inputPrompt.openDialog();
-    }
+
+    setTimeout(() => {
+      if (row === 0) {
+        // chose which dialog to display
+        this.onEditCategoryNameView();
+        this.inputPrompt.openDialog();
+      }
+      if (row !== 0) {
+        this.onEditQuestionView();
+        this.inputPrompt.openDialog();
+      }
+    }, 1);
   }
 
   onBackClick() {
@@ -66,11 +69,3 @@ export class JeopardyGameBoardComponent {
   }
 }
 
-// export interface GameData {
-//   categories: Categories[];
-// }
-
-// export interface Categories {
-//   categoryName: string;
-//   categoryId: number;
-// }
