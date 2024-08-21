@@ -1,11 +1,10 @@
-$SteelBlue: #2D7DD2;
-$LapisLazuil: #225F9E;
-$IndigoDye: #1D5084;
+$SteelBlue: #2d7dd2;
+$LapisLazuil: #225f9e;
+$IndigoDye: #1d5084;
 $Black: #000;
-$Maize: #FFE74C;
-$AshGray:#B0C0BC;
-$Snow: #FFFBFF;
-
+$Maize: #ffe74c;
+$AshGray: #b0c0bc;
+$Snow: #fffbff;
 
 html,
 body,
@@ -52,7 +51,7 @@ td,
   font-size: 1rem;
 }
 .category-title {
-  color: rgb(255, 166, 0)
+  color: rgb(255, 166, 0);
 }
 
 tr {
@@ -113,17 +112,31 @@ caption {
   background: rgb(228, 228, 228);
   transition: all 100ms ease;
 }
-.complete-cell{
+.complete-cell {
   color: white;
   background-color: rgb(52, 54, 108);
-  
 }
-.not-complete-cell{
-  color: $Maize
-  
+.not-complete-cell {
+  color: $Maize;
 }
-@media (min-width:600px){
-  .category-title{ 
+.save-btn {
+  background: rgb(236, 236, 236);
+  border-radius: 7.5px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 10px;
+  color: rgb(85, 85, 85);
+}
+.save-btn:hover {
+  background: rgb(108, 251, 149);
+  transition: all 150ms ease-in-out;
+  box-shadow: 0px 0px 2px 2px rgba( 108, 251, 149, .5);
+}
+@media (min-width: 600px) {
+  .category-title {
     font-size: 1.5rem;
   }
 }

@@ -4,7 +4,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddJeopardyQuestionComponent } from '../add-jeopardy-question/add-jeopardy-question.component';
 import { inject } from '@angular/core';
 import { GameBoardData, GameDataService } from '../gamedata.service';
-import { table } from 'node:console';
 
 @Component({
   selector: 'app-jeopardy-game-board',
@@ -48,8 +47,8 @@ export class JeopardyGameBoardComponent {
   editTableCell(row: number, column: string) {
     const tableCell = { [row]: column };
     this.currentTableCell = tableCell;
-    const cellIsComplete = this.isCellComplete(row, column)
-    if(cellIsComplete){
+    const cellIsComplete = this.isCellComplete(row, column);
+    if (cellIsComplete) {
       // show data in the form
     }
     setTimeout(() => {
@@ -78,6 +77,25 @@ export class JeopardyGameBoardComponent {
     }
     // console.log(false)
     return false;
+  }
+  saveGame() {
+    //check if all boxes are complete
+    // if all boxes are complete -> create new saved game the current gameData.
+    let gameComplete: boolean=false;
+    for (let i = 0; i < this.gameData.length; i++) {
+      if (this.gameData[i].complete) {
+        gameComplete = true;
+        i++
+      } else {
+        gameComplete = false;
+      }
+    }
+    console.log(gameComplete);
+
+    if(gameComplete === false){
+      // do not let allow save.
+      // show toast "Cannot save game, complete all cells"
+    }
   }
 
   onBackClick() {

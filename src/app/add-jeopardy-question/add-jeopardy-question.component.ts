@@ -60,11 +60,12 @@ export class AddJeopardyQuestionComponent {
 
   category = new FormControl('');
   question = new FormControl('');
-  answerOptionA = new FormControl('');
-  answerOptionB = new FormControl('');
-  answerOptionC = new FormControl('');
-  answerOptionD = new FormControl('');
-  correctAnswer = new FormControl('');
+  answerOptionA = new FormControl<string | {}>('');
+  answerOptionB = new FormControl<string | {}>('');
+  answerOptionC = new FormControl<string | {}>('');
+  answerOptionD = new FormControl<string | {}>('');
+  correctAnswer = new FormControl<string>('');
+  validationError: boolean = false;
 
   @Input() currentTableCell!: { [key: number]: string };
   @Input() isEditCategoryNameView!: boolean;
@@ -81,31 +82,44 @@ export class AddJeopardyQuestionComponent {
       (x) => x.row === row && x.column === column
     );
     if (currentCellData?.complete) {
-      // console.log(currentCellData)
       return currentCellData;
     }
     return { error: 'Current cell is not complete.' };
   }
 
-  //! this is not auto focusing anymore
-  // private focusInput() {
-  //   if (this.inputElement) {
-  //     console.log('found input');
-  //     this.category.
-  //   }
-  // }
   openDialog() {
     const currentCell: CurrentCell = this.getCurrentCell();
 
     if (currentCell.complete) {
       this.currentCellData = currentCell;
-      this.question.setValue(currentCell.question !== undefined ? this.question.value : null)
-      // console.log(this.question.value);
-      // console.log(this.currentCellData)
+      if (this.currentCellData.question) {
+        this.question.setValue(this.currentCellData.question);
+      } else {
+        throw new Error('There was an error loading the questio');
+      }
+      if (this.currentCellData.answerOptions) {
+        this.answerOptionA.setValue(
+          Object.values(this.currentCellData.answerOptions[0])
+        );
+        this.answerOptionB.setValue(
+          Object.values(this.currentCellData.answerOptions[1])
+        );
+        this.answerOptionC.setValue(
+          Object.values(this.currentCellData.answerOptions[2])
+        );
+        this.answerOptionD.setValue(
+          Object.values(this.currentCellData.answerOptions[3])
+        );
+      }
+      if (this.currentCellData.answer) {
+        this.correctAnswer.setValue(
+          Object.keys(this.currentCellData.answer)[0]
+        );
+      }
     }
+
     this.isBackdropOpen = true;
     this.isOpen = true;
-    // this.focusInput();
 
     return { error: 'No Current Cell Found' };
   }
@@ -113,7 +127,8 @@ export class AddJeopardyQuestionComponent {
   closeDialog() {
     this.isBackdropOpen = false;
     this.isOpen = false;
-    this.clearInput();
+    this.clearAllInputs();
+    // this.validationError = false
   }
 
   handleChange(e: Event) {
@@ -137,15 +152,24 @@ export class AddJeopardyQuestionComponent {
   }
 
   submitQuestion() {
-    // const question= '';
-    // const possibleAnswers: [{A:""}, {B:""},{C:""},{D:""}];
-    // const answer: {A:''};
+    if (
+      this.question.value === '' ||
+      this.answerOptionA.value === '' ||
+      this.answerOptionB.value === '' ||
+      this.answerOptionC.value === '' ||
+      this.answerOptionD.value === '' ||
+      this.correctAnswer.value === ''
+    ) {
+      // trigger validation error
+      this.validationError = true;
+    }
+
     let categoryLetter = Object.keys(this.currentTableCell)[0];
     let categoryNumber = Object.values(this.currentTableCell)[0];
 
     let row = categoryLetter;
     let column = categoryNumber;
-console.log(this.question.value)
+    // console.log(this.question.value);
     const data = {
       question: this.question.value,
       A: this.answerOptionA.value,
@@ -162,8 +186,9 @@ console.log(this.question.value)
     } catch (error) {
       console.log(error);
     }
-
-    this.closeDialog();
+    if (this.validationError === false) {
+      this.closeDialog();
+    }
   }
 
   clearAllInputs() {

@@ -32,7 +32,6 @@
           <mat-icon>close</mat-icon>
         </button>
       </div>
-     
 
       <div class="question-container">
         <label for="question-input">Question: </label>
@@ -60,27 +59,51 @@
       <div class="inputs-container">
         <div class="label-input-container">
           <label for="option-A">A: </label>
-          <input #possibleAnsersElement id="option-A" [formControl]="answerOptionA" class="answer-inputs" type="text" />
+          <input
+            #possibleAnsersElement
+            id="option-A"
+            [formControl]="answerOptionA"
+            class="answer-inputs"
+            type="text"
+          />
         </div>
         <div class="label-input-container">
           <label for="option-B">B: </label>
-          <input #possibleAnsersElement id="option-B" [formControl]="answerOptionB" class="answer-inputs" type="text" />
+          <input
+            #possibleAnsersElement
+            id="option-B"
+            [formControl]="answerOptionB"
+            class="answer-inputs"
+            type="text"
+          />
         </div>
         <div class="label-input-container">
           <label for="option-C">C: </label>
-          <input #possibleAnsersElement id="option-C" [formControl]="answerOptionC" class="answer-inputs" type="text" />
+          <input
+            #possibleAnsersElement
+            id="option-C"
+            [formControl]="answerOptionC"
+            class="answer-inputs"
+            type="text"
+          />
         </div>
         <div class="label-input-container">
           <label for="option-D">D: </label>
-          <input #possibleAnsersElement id="option-D" [formControl]="answerOptionD" class="answer-inputs" type="text" />
+          <input
+            #possibleAnsersElement
+            id="option-D"
+            [formControl]="answerOptionD"
+            class="answer-inputs"
+            type="text"
+          />
         </div>
       </div>
       <div class="answer-inputs-container">
         <div class="answer-input">
           <label for="answer-A-checkbox">A: </label>
           <input
-          #radioAnsersElement
-          [formControl] = 'correctAnswer'
+            #radioAnsersElement
+            [formControl]="correctAnswer"
             id="'answer-A-checkbox"
             name="answer"
             type="radio"
@@ -90,8 +113,8 @@
         <div class="answer-input">
           <label for="answer-B-checkbox">B: </label>
           <input
-          #radioAnswersElement
-           [formControl] = 'correctAnswer'
+            #radioAnswersElement
+            [formControl]="correctAnswer"
             id="'answer-B-checkbox"
             name="answer"
             type="radio"
@@ -101,8 +124,8 @@
         <div class="answer-input">
           <label for="answer-C-checkbox">C: </label>
           <input
-          #radioAnswersElement
-           [formControl] = 'correctAnswer'
+            #radioAnswersElement
+            [formControl]="correctAnswer"
             id="'answer-C-checkbox"
             name="answer"
             type="radio"
@@ -112,8 +135,8 @@
         <div class="answer-input">
           <label for="answer-D-checkbox">D: </label>
           <input
-          #radioAnswersElement
-           [formControl] = 'correctAnswer'
+            #radioAnswersElement
+            [formControl]="correctAnswer"
             id="'answer-D-checkbox"
             name="answer"
             type="radio"
@@ -122,6 +145,9 @@
         </div>
       </div>
       <div class="btn-container">
+        @if(validationError===true){
+        <p class='validation-error'>fill out all fields</p>
+        }
         <button (click)="submitQuestion()" class="submit-btn">Submit</button>
         <button (click)="closeDialog()" class="close-btn">Close</button>
       </div>
@@ -129,4 +155,3 @@
     }
   </div>
 </div>
-

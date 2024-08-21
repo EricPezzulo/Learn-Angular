@@ -6,6 +6,11 @@
       </button>
 
       Jeopardy!
+      <button (click)="saveGame()" type="button" class='save-btn'>
+        <mat-icon>
+          save
+        </mat-icon>
+      </button>
     </caption>
     <!-- <thead></thead> -->
     <tbody>
@@ -59,7 +64,7 @@
         }
       </tr>
     </tbody>
-    <tfoot>
+    <!-- <tfoot>
       <tr>
         <th scope="row">Team NAME: 400pts</th>
         <td class="team-score">
@@ -67,7 +72,7 @@
           <p>$11,300</p>
         </td>
       </tr>
-    </tfoot>
+    </tfoot> -->
   </table>
 </div>
 <app-add-jeopardy-question

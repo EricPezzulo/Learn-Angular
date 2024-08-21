@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { isBooleanObject } from 'node:util/types';
 
 @Injectable({
   providedIn: 'root',
@@ -256,8 +257,7 @@ export class GameDataService {
     const questionToUpdate = this.gameData.find(
       (x) => x.row === Number(data.row) && x.column === data.column
     );
-
-    if (questionToUpdate?.question === '') {
+    if (questionToUpdate) {
       questionToUpdate.question = data.question;
     }
 
@@ -271,7 +271,7 @@ export class GameDataService {
     }
     if (questionToUpdate?.answer) {
       const idx = data.answer;
-      questionToUpdate.answer = { [data.answer]: data[idx] };
+      questionToUpdate.answer = { [data.answer]: data[idx][0] };
     }
     if (questionToUpdate?.complete === false) {
       questionToUpdate.complete = true;
