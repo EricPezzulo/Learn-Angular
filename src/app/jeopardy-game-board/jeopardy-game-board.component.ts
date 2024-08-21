@@ -45,12 +45,13 @@ export class JeopardyGameBoardComponent {
   receiveNewCategory($event: any) {
     this.promptInput = $event;
   }
-  async editTableCell(row: number, column: string) {
-    // console.log(this.gameData);
+  editTableCell(row: number, column: string) {
     const tableCell = { [row]: column };
-    // console.log(row, column, tableCell);
     this.currentTableCell = tableCell;
-
+    const cellIsComplete = this.isCellComplete(row, column)
+    if(cellIsComplete){
+      // show data in the form
+    }
     setTimeout(() => {
       if (row === 0) {
         // chose which dialog to display
@@ -63,9 +64,23 @@ export class JeopardyGameBoardComponent {
       }
     }, 1);
   }
+  isCellComplete(row: number, column: string): boolean {
+    // find cell on board
+    let currentCell = this.gameData.find(
+      (x) => x.row === row && x.column === column
+    );
+    // is cell complete?
+    if (currentCell) {
+      if (currentCell.complete) {
+        // console.log(true)
+        return true;
+      }
+    }
+    // console.log(false)
+    return false;
+  }
 
   onBackClick() {
     this.goBack.emit();
   }
 }
-

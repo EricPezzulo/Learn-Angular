@@ -15,7 +15,11 @@ import {
   trigger,
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { GameDataService } from '../gamedata.service';
+import {
+  AnswerOptions,
+  GameBoardData,
+  GameDataService,
+} from '../gamedata.service';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -24,7 +28,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, MatIconModule, ReactiveFormsModule],
   templateUrl: './add-jeopardy-question.component.html',
-  styleUrl: './add-jeopardy-question.component.css',
+  styleUrl: './add-jeopardy-question.component.scss',
   animations: [
     trigger('openDialog', [
       state('open', style({ opacity: 1, transform: 'translateY(0px)' })),
@@ -48,9 +52,13 @@ export class AddJeopardyQuestionComponent {
   @ViewChild('inputElement') inputElement!: ElementRef;
   @ViewChild('possibleAnsersElement') possibleAnswersElement!: ElementRef;
   @ViewChild('radioAnswersElement') radioAnswersElement!: ElementRef;
+  gameData!: GameBoardData[];
 
+  constructor() {
+    this.gameData = this.GameDataService.getAllGameData();
+  }
 
-  category = new FormControl('')
+  category = new FormControl('');
   question = new FormControl('');
   answerOptionA = new FormControl('');
   answerOptionB = new FormControl('');
@@ -64,6 +72,20 @@ export class AddJeopardyQuestionComponent {
   @Input() promptInput!: string;
   @Output() updateInputEvent: EventEmitter<string> = new EventEmitter<string>();
 
+  currentCellData!: CurrentCell;
+
+  getCurrentCell() {
+    const row = Number(Object.keys(this.currentTableCell)[0]);
+    const column = Object.values(this.currentTableCell)[0];
+    const currentCellData = this.gameData.find(
+      (x) => x.row === row && x.column === column
+    );
+    if (currentCellData?.complete) {
+      return currentCellData;
+    }
+    return 'no current cell';
+  }
+
   //! this is not auto focusing anymore
   // private focusInput() {
   //   if (this.inputElement) {
@@ -75,7 +97,14 @@ export class AddJeopardyQuestionComponent {
     this.isBackdropOpen = true;
     this.isOpen = true;
     // this.focusInput();
-    console.log(this.currentTableCell);
+    const currentCell: CurrentCell | string = this.getCurrentCell();
+
+    if (currentCell !== 'no cecurrent cell') {
+      this.currentCellData = currentCell;
+      console.log(this.currentCellData)
+    }
+
+
   }
 
   closeDialog() {
@@ -126,24 +155,21 @@ export class AddJeopardyQuestionComponent {
     };
     try {
       this.GameDataService.addQuestion(data);
-      console.log('before clear input');
       this.clearAllInputs();
-      console.log('after clear input');
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
 
     this.closeDialog();
   }
 
   clearAllInputs() {
-    this.question.reset()
-    this.answerOptionA.reset()
-    this.answerOptionB.reset()
-    this.answerOptionC.reset()
-    this.answerOptionD.reset()
-    this.correctAnswer.reset()
-    
+    this.question.reset();
+    this.answerOptionA.reset();
+    this.answerOptionB.reset();
+    this.answerOptionC.reset();
+    this.answerOptionD.reset();
+    this.correctAnswer.reset();
   }
 
   clearInput() {
@@ -151,4 +177,14 @@ export class AddJeopardyQuestionComponent {
       this.inputElement.nativeElement.value = '';
     }
   }
+}
+
+interface CurrentCell {
+  answer: { [key: string]: string } | {};
+  answerOptions: AnswerOptions[];
+  column: string;
+  complete: boolean;
+  pointValue: number;
+  question: string;
+  row: number;
 }
