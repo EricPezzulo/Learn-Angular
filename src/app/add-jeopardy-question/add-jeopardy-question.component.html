@@ -36,6 +36,15 @@
 
       <div class="question-container">
         <label for="question-input">Question: </label>
+        <!-- @if(currentCellData.complete){
+          <textarea
+          [formControl]="question"
+          #possibleAnsersElement
+          class="answer-inputs question-input"
+          id="question-input"
+          type="text"
+        ></textarea>
+        } -->
         <textarea
           [formControl]="question"
           #possibleAnsersElement

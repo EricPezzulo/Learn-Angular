@@ -81,9 +81,10 @@ export class AddJeopardyQuestionComponent {
       (x) => x.row === row && x.column === column
     );
     if (currentCellData?.complete) {
+      // console.log(currentCellData)
       return currentCellData;
     }
-    return 'no current cell';
+    return { error: 'Current cell is not complete.' };
   }
 
   //! this is not auto focusing anymore
@@ -94,17 +95,19 @@ export class AddJeopardyQuestionComponent {
   //   }
   // }
   openDialog() {
+    const currentCell: CurrentCell = this.getCurrentCell();
+
+    if (currentCell.complete) {
+      this.currentCellData = currentCell;
+      this.question.setValue(currentCell.question !== undefined ? this.question.value : null)
+      // console.log(this.question.value);
+      // console.log(this.currentCellData)
+    }
     this.isBackdropOpen = true;
     this.isOpen = true;
     // this.focusInput();
-    const currentCell: CurrentCell | string = this.getCurrentCell();
 
-    if (currentCell !== 'no cecurrent cell') {
-      this.currentCellData = currentCell;
-      console.log(this.currentCellData)
-    }
-
-
+    return { error: 'No Current Cell Found' };
   }
 
   closeDialog() {
@@ -142,7 +145,7 @@ export class AddJeopardyQuestionComponent {
 
     let row = categoryLetter;
     let column = categoryNumber;
-
+console.log(this.question.value)
     const data = {
       question: this.question.value,
       A: this.answerOptionA.value,
@@ -180,11 +183,12 @@ export class AddJeopardyQuestionComponent {
 }
 
 interface CurrentCell {
-  answer: { [key: string]: string } | {};
-  answerOptions: AnswerOptions[];
-  column: string;
-  complete: boolean;
-  pointValue: number;
-  question: string;
-  row: number;
+  answer?: { [key: string]: string } | {};
+  answerOptions?: AnswerOptions;
+  column?: string;
+  complete?: boolean;
+  pointValue?: number;
+  question?: string;
+  row?: number;
+  error?: string;
 }
