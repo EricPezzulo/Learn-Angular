@@ -8,7 +8,7 @@ main {
   flex-direction: column;
   align-items: center;
 }
-.gamenight-title { 
+.gamenight-title {
   font-weight: 800;
   font-size: 3rem;
   font-family: "Inter", sans-serif;
@@ -40,23 +40,21 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin:1rem;
+  margin: 1rem;
   position: relative;
   overflow: hidden;
 }
 .game-option-container:hover {
-  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .1);
   cursor: pointer;
   transition: all 200ms ease-in;
   // background-image: url('/jeopardy.png');
   background-size: cover;
   background-position: center;
-  
 }
 
-
 .game-option-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -75,31 +73,29 @@ h2 {
 }
 
 .jeopardy-background::before {
-  background-image: url('/jeopardy.png');
+  background-image: url("/jeopardy.png");
 }
 
 .trivia-background::before {
-  background-image: url('/trivia.jpeg');
+  background-image: url("/trivia.jpeg");
 }
 
 .war-background::before {
-  background-image: url('/war.jpeg');
+  background-image: url("/war.jpeg");
 }
 
 .game-option-content-container {
- text-align: center;
+  text-align: center;
 }
-.game-option-title { 
+.game-option-title {
   font-weight: 600;
   font-size: 1.5rem;
-  color: rgb(100, 100, 100)
+  color: rgb(100, 100, 100);
 }
-.game-option-container:hover .game-option-title { 
+.game-option-container:hover .game-option-title {
   color: transparent;
   transition: all 200ms ease-in;
-  
 }
-
 
 @media (min-width: 420px) {
   .users-container {
