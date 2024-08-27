@@ -18,7 +18,11 @@
     </div>
     <div class="middle">
       @if(optionA && optionB && optionC && optionD){
-      <div>
+      <button
+        (click)="selectOption('A')"
+        type="button"
+        class="selection-container"
+      >
         <input
           [formControl]="answer"
           class="answer-option-inputs"
@@ -27,20 +31,29 @@
           value="A"
         />
         <label for="">A. {{ optionA }}</label>
-      </div>
+      </button>
 
-      <div>
+      <button
+        (click)="selectOption('B')"
+        type="button"
+        class="selection-container"
+      >
         <input
           [formControl]="answer"
           class="answer-option-inputs"
           type="radio"
           name="choice"
           value="B"
+          #selectionB
         />
         <label for="">B. {{ optionB }}</label>
-      </div>
+      </button>
 
-      <div>
+      <button
+        type="button"
+        (click)="selectOption('C')"
+        class="selection-container"
+      >
         <input
           [formControl]="answer"
           class="answer-option-inputs"
@@ -49,9 +62,13 @@
           value="C"
         />
         <label for="">C.{{ optionC }}</label>
-      </div>
+      </button>
 
-      <div>
+      <button
+        type="button"
+        (click)="selectOption('D')"
+        class="selection-container"
+      >
         <input
           [formControl]="answer"
           class="answer-option-inputs"
@@ -60,7 +77,7 @@
           value="D"
         />
         <label for="">D. {{ optionD }}</label>
-      </div>
+      </button>
       }
     </div>
 

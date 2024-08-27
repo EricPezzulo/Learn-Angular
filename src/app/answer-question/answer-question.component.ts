@@ -40,10 +40,7 @@ export class AnswerQuestionComponent {
   optionC: string = '';
   optionD: string = '';
   question: string = '';
-  // radioOptionA = new FormControl<string | {}>('');
-  // radioOptionB = new FormControl<string | {}>('');
-  // radioOptionC = new FormControl<string | {}>('');
-  // radioOptionD = new FormControl<string | {}>('');
+
   answer = new FormControl();
 
   closeDialog() {
@@ -56,6 +53,9 @@ export class AnswerQuestionComponent {
     this.answer.reset();
   }
 
+  selectOption(value: string) {
+    this.answer.setValue(value);
+  }
   submit() {
     console.log(this.currentCell);
 
