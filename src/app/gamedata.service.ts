@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { isBooleanObject } from 'node:util/types';
+import { Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameDataService {
+  url = 'http://localhost:3000/gameData';
+
   protected gameData: GameBoardData[] = [
     // categoryies -> ROW 0
     { column: 'A', row: 0, categoryName: 'Category A', complete: false },
@@ -63,9 +66,9 @@ export class GameDataService {
       column: 'A',
       row: 2,
       pointValue: 200,
-      question: '7-4?',
-      answer: { A: '3' },
-      answerOptions: [{ A: '3' }, { B: '1' }, { C: '6' }, { D: '0' }],
+      question: '',
+      answer: {},
+      answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
       complete: false,
     },
     {
@@ -104,7 +107,7 @@ export class GameDataService {
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
       complete: false,
     },
-    // $300 -> ROW 3
+
     {
       column: 'A',
       row: 3,
@@ -238,7 +241,7 @@ export class GameDataService {
       row: 5,
       pointValue: 500,
       question: '',
-      answer: { A: 'lorem ipsum' },
+      answer: {},
       answerOptions: [{ A: '' }, { B: '' }, { C: '' }, { D: '' }],
       complete: false,
     },
@@ -251,6 +254,16 @@ export class GameDataService {
   // getCategory(): Categories[] {
   //   return this.gameData.categories;
   // }
+
+  constructor(private http: HttpClient) {}
+
+  async loadSavedGame(): Promise<GameBoardData[]> {
+    const response = await fetch(this.url);
+    const data = await response.json();
+    this.gameData = data;
+    // console.log(this.gameData);
+    return data;
+  }
 
   addQuestion(data: any) {
     console.log(data);

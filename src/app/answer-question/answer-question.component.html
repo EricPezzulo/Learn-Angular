@@ -1,0 +1,73 @@
+<div
+  [@openBackdrop]="isBackdropOpen ? 'open' : 'closed'"
+  class="backdrop"
+  (click)="closeDialog()"
+>
+  <div
+    [@openDialog]="isDialogOpen ? 'open' : 'closed'"
+    (click)="$event.stopPropagation()"
+    class="container"
+  >
+    <button class="close-btn" (click)="closeDialog()" type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="top">
+      @if(question){
+      <p class="question">{{ question }}</p>
+      }
+    </div>
+    <div class="middle">
+      @if(optionA && optionB && optionC && optionD){
+      <div>
+        <input
+          [formControl]="answer"
+          class="answer-option-inputs"
+          type="radio"
+          name="choice"
+          value="A"
+        />
+        <label for="">A. {{ optionA }}</label>
+      </div>
+
+      <div>
+        <input
+          [formControl]="answer"
+          class="answer-option-inputs"
+          type="radio"
+          name="choice"
+          value="B"
+        />
+        <label for="">B. {{ optionB }}</label>
+      </div>
+
+      <div>
+        <input
+          [formControl]="answer"
+          class="answer-option-inputs"
+          type="radio"
+          name="choice"
+          value="C"
+        />
+        <label for="">C.{{ optionC }}</label>
+      </div>
+
+      <div>
+        <input
+          [formControl]="answer"
+          class="answer-option-inputs"
+          type="radio"
+          name="choice"
+          value="D"
+        />
+        <label for="">D. {{ optionD }}</label>
+      </div>
+      }
+    </div>
+
+    <div class="bottom">
+      <button (click)="submit()" class="submit" type="button">
+        Submit Answer
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+@if(!showSavedGame){
+<div class="container">
+  <div class="saved-games-list">
+    <div class="top-section">
+      <button class="btn" (click)="onBackClick()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <p class="title">Select saved game to play:</p>
+    </div>
+    <ul class="games-list">
+      <p>Saved Games:</p>
+      <li (click)="selectGame('game1')" class="game-title">
+        <p>Game 1</p>
+        <p>08/26/2024</p>
+      </li>
+      <li class="game-title">
+        <p>Game 2</p>
+        <p>06/20/2024</p>
+      </li>
+      <li class="game-title">
+        <p>Game 3</p>
+        <p>09/15/2023</p>
+      </li>
+    </ul>
+  </div>
+</div>
+} @if(showSavedGame){
+<app-saved-game-board></app-saved-game-board>
+}

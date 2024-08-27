@@ -3,6 +3,7 @@ import { ReusableDialogComponent } from '../reusable-dialog/reusable-dialog.comp
 import { AddJeopardyQuestionComponent } from '../add-jeopardy-question/add-jeopardy-question.component';
 import { JeopardyGameBoardComponent } from '../jeopardy-game-board/jeopardy-game-board.component';
 import { CommonModule } from '@angular/common';
+import { SavedGamesComponent } from '../saved-games/saved-games.component';
 
 @Component({
   selector: 'app-jeopardy',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
     AddJeopardyQuestionComponent,
     JeopardyGameBoardComponent,
     CommonModule,
+    SavedGamesComponent,
   ],
 
   templateUrl: './jeopardy.component.html',
@@ -29,19 +31,8 @@ export class JeopardyComponent {
     this.currentTab = 'chose-options';
     console.log(this.currentTab);
   }
-  c1q1 = {
-    value: '100',
-    question: 'How many dogs',
-    options: [{ A: 4 }, { B: 12 }, { C: 14 }, { D: 5 }],
-    answer: { D: 5 },
-  };
 
   openQuestion() {
     this.dialog.openDialog();
-    console.log({
-      question: this.c1q1.question,
-      options: this.c1q1.options,
-      answer: this.c1q1.answer,
-    });
   }
 }

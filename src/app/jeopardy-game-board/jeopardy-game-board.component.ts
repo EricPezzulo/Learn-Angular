@@ -81,18 +81,18 @@ export class JeopardyGameBoardComponent {
   saveGame() {
     //check if all boxes are complete
     // if all boxes are complete -> create new saved game the current gameData.
-    let gameComplete: boolean=false;
+    let gameComplete: boolean = false;
     for (let i = 0; i < this.gameData.length; i++) {
       if (this.gameData[i].complete) {
         gameComplete = true;
-        i++
+        i++;
       } else {
         gameComplete = false;
       }
     }
     console.log(gameComplete);
 
-    if(gameComplete === false){
+    if (gameComplete === false) {
       // do not let allow save.
       // show toast "Cannot save game, complete all cells"
     }

@@ -6,18 +6,18 @@
       </button>
 
       Jeopardy!
-      <button (click)="saveGame()" type="button" class="save-btn">
-        <mat-icon> save </mat-icon>
-      </button>
+      <!-- <button (click)="saveGame()" type="button" class='save-btn'>
+        <mat-icon>
+          save
+        </mat-icon>
+      </button> -->
     </caption>
     <!-- <thead></thead> -->
+    @if(gameData.length > 0){
     <tbody>
       <tr>
         @for(cell of gameData.slice(0,5); track $index){
-        <th
-          (click)="editTableCell(cell.row, cell.column)"
-          class="category-title"
-        >
+        <th class="category-title">
           {{ cell?.categoryName }}
         </th>
         }
@@ -25,8 +25,8 @@
       <tr>
         @for(cell of gameData.slice(5,10); track $index){
         <td
+          (click)="openDialog(cell.row, cell.column)"
           [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
-          (click)="editTableCell(cell.row, cell.column)"
         >
           <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">
             ${{ cell?.pointValue }}
@@ -38,8 +38,8 @@
       <tr>
         @for(cell of gameData.slice(10,15); track $index){
         <td
+          (click)="openDialog(cell.row, cell.column)"
           [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
-          (click)="editTableCell(cell.row, cell.column)"
         >
           <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">
             ${{ cell?.pointValue }}
@@ -50,8 +50,8 @@
       <tr>
         @for(cell of gameData.slice(15,20); track $index){
         <td
+          (click)="openDialog(cell.row, cell.column)"
           [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
-          (click)="editTableCell(cell.row, cell.column)"
         >
           <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">
             ${{ cell?.pointValue }}
@@ -62,8 +62,8 @@
       <tr>
         @for(cell of gameData.slice(20,25); track $index){
         <td
+          (click)="openDialog(cell.row, cell.column)"
           [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
-          (click)="editTableCell(cell.row, cell.column)"
         >
           <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">
             ${{ cell?.pointValue }}
@@ -74,8 +74,8 @@
       <tr>
         @for(cell of gameData.slice(25,30); track $index){
         <td
+          (click)="openDialog(cell.row, cell.column)"
           [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'"
-          (click)="editTableCell(cell.row, cell.column)"
         >
           <p [ngClass]="cell.complete ? 'complete-cell' : 'not-complete-cell'">
             ${{ cell?.pointValue }}
@@ -84,6 +84,8 @@
         }
       </tr>
     </tbody>
+    }
+
     <!-- <tfoot>
       <tr>
         <th scope="row">Team NAME: 400pts</th>
@@ -95,10 +97,5 @@
     </tfoot> -->
   </table>
 </div>
-<app-add-jeopardy-question
-  [isEditCategoryNameView]="isEditCategoryNameView"
-  [isEditQuestionView]="isEditQuestionView"
-  [promptInput]="promptInput"
-  (updateInputEvent)="receiveNewCategory($event)"
-  [currentTableCell]="currentTableCell"
-></app-add-jeopardy-question>
+
+<app-answer-question [currentCell]="currentCell"></app-answer-question>

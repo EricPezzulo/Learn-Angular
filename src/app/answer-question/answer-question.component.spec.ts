@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoItemComponent } from './todo-item.component';
+import { AnswerQuestionComponent } from './answer-question.component';
 
-describe('TodoItemComponent', () => {
-  let component: TodoItemComponent;
-  let fixture: ComponentFixture<TodoItemComponent>;
+describe('AnswerQuestionComponent', () => {
+  let component: AnswerQuestionComponent;
+  let fixture: ComponentFixture<AnswerQuestionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TodoItemComponent]
+      imports: [AnswerQuestionComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TodoItemComponent);
+    fixture = TestBed.createComponent(AnswerQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

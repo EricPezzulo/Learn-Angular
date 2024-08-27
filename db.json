@@ -1,144 +1,384 @@
 {
-  "users": [
+  "gameData": [
     {
-      "userId": 1,
-      "firstName": "William",
-      "lastName": "Butcher",
-      "phoneNumber": null,
-      "address": null,
-      "age": "Late 40s",
-      "height": "6'2",
-      "weight": "200",
-      "alias": "The Butcher",
-      "associates": {
-        "firstName": null,
-        "lastName": "Milk",
-        "alias": "M.M."
-      },
-      "photoUrl": "https://staticg.sportskeeda.com/editor/2024/05/b4e89-17164144459909-1920.jpg?w=640"
+      "column": "A",
+      "row": 0,
+      "categoryName": "Movies",
+      "complete": false
     },
     {
-      "userId": 2,
-      "firstName": "Mother's",
-      "lastName": "Milk",
-      "phoneNumber": null,
-      "address": null,
-      "age": "Late 40s",
-      "height": "5'10",
-      "weight": "185",
-      "alias": "M.M.",
-      "associates": {
-        "firstName": "Willaim Butcher",
-        "lastName": "Butcher",
-        "alias": "The Butcher"
-      },
-      "photoUrl": "https://i.pinimg.com/736x/bd/f2/e3/bdf2e36180bb79e57ebc9dd5004af200.jpg"
+      "column": "B",
+      "row": 0,
+      "categoryName": "History",
+      "complete": false
     },
     {
-      "userId": 3,
-      "firstName": "Annie",
-      "lastName": "January",
-      "phoneNumber": "(646)-834-9475",
-      "address": "Vaught Tower",
-      "age": 29,
-      "height": "5'6",
-      "weight": "133",
-      "alias": "Starlight",
-      "associates": {
-        "firstName": "",
-        "lastName": "",
-        "alias": ""
-      },
-      "photoUrl": "https://img.theweek.in/content/dam/week/week/news/entertainment/images/2024/7/13/starlight-boys.jpg"
+      "column": "C",
+      "row": 0,
+      "categoryName": "Technology",
+      "complete": false
     },
     {
-      "userId": 4,
-      "firstName": "Hugh",
-      "lastName": "Campbell",
-      "phoneNumber": "(729)-433-9843",
-      "address": "Chicago",
-      "age": 31,
-      "height": "6'2",
-      "weight": "180",
-      "alias": "Hughie",
-      "associates": [
-        {
-          "firstName": "Annie",
-          "lastName": "January",
-          "alias": "Starlight"
-        },
-        {
-          "firstName": "William",
-          "lastName": "Butcher",
-          "alias": "The Butcher"
-        }
+      "column": "D",
+      "row": 0,
+      "categoryName": "Sports",
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 0,
+      "categoryName": "Random",
+      "complete": false
+    },
+
+    {
+      "column": "A",
+      "row": 1,
+      "pointValue": 100,
+      "question": "What movie does Leonardo DiCaprio travel through different levels of dreams?",
+      "answer": { "B": "Inception" },
+      "answerOptions": [
+        { "A": "Interstellar" },
+        { "B": "Inception" },
+        { "C": "Shutter Island" },
+        { "D": "Titanic" }
       ],
-      "photoUrl": "https://imgix.ranker.com/list_img_v2/6050/2806050/original/best-hughie-campbell-quotes-u1?auto=format&q=50&fit=crop&fm=pjpg&dpr=2&crop=faces&h=185.86387434554973&w=355"
+      "complete": false
     },
     {
-      "userId": 5,
-      "firstName": "Serge",
-      "lastName": null,
-      "phoneNumber": null,
-      "address": "",
-      "age": 30,
-      "height": "5'7",
-      "weight": "165",
-      "alias": "Frenchie",
-      "associates": [
-        {
-          "firstName": "Kimiko",
-          "lastName": "Miyashiro",
-          "alias": "The Female"
-        },
-        {
-          "firstName": "Hugh",
-          "lastName": "Campbell",
-          "alias": "Hughie"
-        }
+      "column": "B",
+      "row": 1,
+      "pointValue": 100,
+      "question": "Who was the first President of the United States?",
+      "answer": { "A": "George Washington" },
+      "answerOptions": [
+        { "A": "George Washington" },
+        { "B": "Abraham Lincoln" },
+        { "C": "Thomas Jefferson" },
+        { "D": "John Adams" }
       ],
-      "photoUrl": "https://variety.com/wp-content/uploads/2024/06/The-Boys-Frenchie.jpg"
+      "complete": false
     },
     {
-      "userId": 6,
-      "firstName": "Kimiko",
-      "lastName": "MIyashiro",
-      "phoneNumber": null,
-      "address": null,
-      "age": 25,
-      "height": "5'7",
-      "weight": "120",
-      "alias": "The Female",
-      "associates": {
-        "firstName": "Serge",
-        "lastName": null,
-        "alias": "Frenchie"
-      },
-      "photoUrl": "https://i.pinimg.com/originals/a2/fa/bc/a2fabcd805d1b16e7d7d96c87a29fae3.jpg"
-    },
-    {
-      "userId": 7,
-      "firstName": "Grace",
-      "lastName": "Mallory",
-      "phoneNumber": null,
-      "address": null,
-      "age": 62,
-      "height": "5'9",
-      "weight": null,
-      "alias": "Colonel Mallory",
-      "associates": [
-        {
-          "firstName": "William",
-          "lastName": "Butcher",
-          "alias": "The Butcher"
-        },
-        {
-          "firstName": null,
-          "lastName": "Milk",
-          "alias": "M.M."
-        }
+      "column": "C",
+      "row": 1,
+      "pointValue": 100,
+      "question": "What does 'HTML' stand for?",
+      "answer": { "B": "HyperText Markup Language" },
+      "answerOptions": [
+        { "A": "HighText Machine Language" },
+        { "B": "HyperText Markup Language" },
+        { "C": "HyperTool Machine Language" },
+        { "D": "Hyperlink Text Module Language" }
       ],
-      "photoUrl": "https://editors.dexerto.com/wp-content/uploads/2023/10/25/grace-mallory-the-boys-gen-v.jpg"
+      "complete": false
+    },
+    {
+      "column": "D",
+      "row": 1,
+      "pointValue": 100,
+      "question": "Which sport uses the term 'home run'?",
+      "answer": { "C": "Baseball" },
+      "answerOptions": [
+        { "A": "Basketball" },
+        { "B": "Soccer" },
+        { "C": "Baseball" },
+        { "D": "Hockey" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 1,
+      "pointValue": 100,
+      "question": "What is the capital of France?",
+      "answer": { "A": "Paris" },
+      "answerOptions": [
+        { "A": "Paris" },
+        { "B": "London" },
+        { "C": "Berlin" },
+        { "D": "Madrid" }
+      ],
+      "complete": false
+    },
+
+    {
+      "column": "A",
+      "row": 2,
+      "pointValue": 200,
+      "question": "Which movie features the quote 'I'll be back'?",
+      "answer": { "C": "The Terminator" },
+      "answerOptions": [
+        { "A": "Die Hard" },
+        { "B": "Rambo" },
+        { "C": "The Terminator" },
+        { "D": "Predator" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "B",
+      "row": 2,
+      "pointValue": 200,
+      "question": "In what year did the Titanic sink?",
+      "answer": { "B": "1912" },
+      "answerOptions": [
+        { "A": "1905" },
+        { "B": "1912" },
+        { "C": "1920" },
+        { "D": "1933" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "C",
+      "row": 2,
+      "pointValue": 200,
+      "question": "What is the main component of a computer's CPU?",
+      "answer": { "D": "Transistor" },
+      "answerOptions": [
+        { "A": "Capacitor" },
+        { "B": "Resistor" },
+        { "C": "Inductor" },
+        { "D": "Transistor" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "D",
+      "row": 2,
+      "pointValue": 200,
+      "question": "In which sport is the term 'love' used for a score?",
+      "answer": { "A": "Tennis" },
+      "answerOptions": [
+        { "A": "Tennis" },
+        { "B": "Football" },
+        { "C": "Cricket" },
+        { "D": "Rugby" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 2,
+      "pointValue": 200,
+      "question": "What is the chemical symbol for water?",
+      "answer": { "C": "H2O" },
+      "answerOptions": [
+        { "A": "HO" },
+        { "B": "O2" },
+        { "C": "H2O" },
+        { "D": "HHO" }
+      ],
+      "complete": false
+    },
+
+    {
+      "column": "A",
+      "row": 3,
+      "pointValue": 300,
+      "question": "Which film won the Academy Award for Best Picture in 1994?",
+      "answer": { "D": "Forrest Gump" },
+      "answerOptions": [
+        { "A": "Pulp Fiction" },
+        { "B": "The Shawshank Redemption" },
+        { "C": "Four Weddings and a Funeral" },
+        { "D": "Forrest Gump" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "B",
+      "row": 3,
+      "pointValue": 300,
+      "question": "Which ancient civilization built the pyramids?",
+      "answer": { "A": "Egyptian" },
+      "answerOptions": [
+        { "A": "Egyptian" },
+        { "B": "Roman" },
+        { "C": "Mayan" },
+        { "D": "Greek" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "C",
+      "row": 3,
+      "pointValue": 300,
+      "question": "Who is known as the father of the computer?",
+      "answer": { "C": "Charles Babbage" },
+      "answerOptions": [
+        { "A": "Alan Turing" },
+        { "B": "Bill Gates" },
+        { "C": "Charles Babbage" },
+        { "D": "Steve Jobs" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "D",
+      "row": 3,
+      "pointValue": 300,
+      "question": "Which country won the FIFA World Cup in 2018?",
+      "answer": { "D": "France" },
+      "answerOptions": [
+        { "A": "Brazil" },
+        { "B": "Germany" },
+        { "C": "Argentina" },
+        { "D": "France" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 3,
+      "pointValue": 300,
+      "question": "What is the largest planet in our solar system?",
+      "answer": { "A": "Jupiter" },
+      "answerOptions": [
+        { "A": "Jupiter" },
+        { "B": "Saturn" },
+        { "C": "Earth" },
+        { "D": "Mars" }
+      ],
+      "complete": false
+    },
+
+    {
+      "column": "A",
+      "row": 4,
+      "pointValue": 400,
+      "question": "Which actor played the character of Tony Stark in the Marvel Cinematic Universe?",
+      "answer": { "B": "Robert Downey Jr." },
+      "answerOptions": [
+        { "A": "Chris Hemsworth" },
+        { "B": "Robert Downey Jr." },
+        { "C": "Mark Ruffalo" },
+        { "D": "Chris Evans" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "B",
+      "row": 4,
+      "pointValue": 400,
+      "question": "What year did the Berlin Wall fall?",
+      "answer": { "C": "1989" },
+      "answerOptions": [
+        { "A": "1979" },
+        { "B": "1985" },
+        { "C": "1989" },
+        { "D": "1991" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "C",
+      "row": 4,
+      "pointValue": 400,
+      "question": "What was the first computer virus called?",
+      "answer": { "D": "Creeper" },
+      "answerOptions": [
+        { "A": "Elk Cloner" },
+        { "B": "ILOVEYOU" },
+        { "C": "Nimda" },
+        { "D": "Creeper" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "D",
+      "row": 4,
+      "pointValue": 400,
+      "question": "Which sport is known as 'the beautiful game'?",
+      "answer": { "A": "Soccer" },
+      "answerOptions": [
+        { "A": "Soccer" },
+        { "B": "Basketball" },
+        { "C": "Golf" },
+        { "D": "Rugby" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 4,
+      "pointValue": 400,
+      "question": "What is the smallest prime number?",
+      "answer": { "A": "2" },
+      "answerOptions": [{ "A": "2" }, { "B": "3" }, { "C": "1" }, { "D": "5" }],
+      "complete": false
+    },
+
+    {
+      "column": "A",
+      "row": 5,
+      "pointValue": 500,
+      "question": "Which movie won the first Academy Award for Best Picture?",
+      "answer": { "D": "Wings" },
+      "answerOptions": [
+        { "A": "Sunrise" },
+        { "B": "The Jazz Singer" },
+        { "C": "The Broadway Melody" },
+        { "D": "Wings" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "B",
+      "row": 5,
+      "pointValue": 500,
+      "question": "Who was the first man to step on the moon?",
+      "answer": { "A": "Neil Armstrong" },
+      "answerOptions": [
+        { "A": "Neil Armstrong" },
+        { "B": "Buzz Aldrin" },
+        { "C": "Yuri Gagarin" },
+        { "D": "Michael Collins" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "C",
+      "row": 5,
+      "pointValue": 500,
+      "question": "What year was the World Wide Web introduced to the public?",
+      "answer": { "C": "1991" },
+      "answerOptions": [
+        { "A": "1989" },
+        { "B": "1990" },
+        { "C": "1991" },
+        { "D": "1992" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "D",
+      "row": 5,
+      "pointValue": 500,
+      "question": "What is the maximum score in a single game of bowling?",
+      "answer": { "D": "300" },
+      "answerOptions": [
+        { "A": "100" },
+        { "B": "200" },
+        { "C": "250" },
+        { "D": "300" }
+      ],
+      "complete": false
+    },
+    {
+      "column": "E",
+      "row": 5,
+      "pointValue": 500,
+      "question": "What is the speed of light in a vacuum?",
+      "answer": { "A": "299,792,458 m/s" },
+      "answerOptions": [
+        { "A": "299,792,458 m/s" },
+        { "B": "150,000,000 m/s" },
+        { "C": "3,000,000 m/s" },
+        { "D": "1,000,000 m/s" }
+      ],
+      "complete": false
     }
   ]
 }

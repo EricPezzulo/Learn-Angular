@@ -8,7 +8,6 @@ import {
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { v4 as uuidv4 } from 'uuid';
-import { elemListType } from '../todos-component/todos-component';
 
 @Component({
   selector: 'app-reusable-dialog',
@@ -37,7 +36,6 @@ export class ReusableDialogComponent {
 
   @ViewChild('inputElement') inputElement!: ElementRef;
 
-  @Input() elemList!: elemListType[];
   private focusInput() {
     if (this.inputElement) {
       this.inputElement.nativeElement.focus();
@@ -59,10 +57,10 @@ export class ReusableDialogComponent {
   }
   submit() {
     const newItem = { id: uuidv4(), item: this.inputValue, completed: false };
-    this.elemList.push(newItem);
+    // this.elemList.push(newItem);
     this.clearInput();
     this.closeDialog();
-    console.log(this.elemList)
+    // console.log(this.elemList)
   }
   clearInput() {
     this.inputElement.nativeElement.value = '';

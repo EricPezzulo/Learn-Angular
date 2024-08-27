@@ -207,7 +207,7 @@ export class AddJeopardyQuestionComponent {
   }
 }
 
-interface CurrentCell {
+export interface CurrentCell {
   answer?: { [key: string]: string } | {};
   answerOptions?: AnswerOptions;
   column?: string;

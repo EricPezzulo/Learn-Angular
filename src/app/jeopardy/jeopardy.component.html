@@ -24,11 +24,8 @@
   ></app-jeopardy-game-board>
 
   <div *ngIf="currentTab === 'saved-game'">
-    <p>Choose saved game</p>
-    <button (click)="goBack()">back</button>
+    <app-saved-games (goBack)="goBack()"></app-saved-games>
   </div>
 </div>
 
 <!-- <app-add-jeopardy-question></app-add-jeopardy-question -->
-
-

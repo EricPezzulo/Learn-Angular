@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddUserComponent } from './add-user.component';
+import { SavedGameBoardComponent } from './saved-game-board.component';
 
-describe('AddUserComponent', () => {
-  let component: AddUserComponent;
-  let fixture: ComponentFixture<AddUserComponent>;
+describe('SavedGameBoardComponent', () => {
+  let component: SavedGameBoardComponent;
+  let fixture: ComponentFixture<SavedGameBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddUserComponent]
+      imports: [SavedGameBoardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddUserComponent);
+    fixture = TestBed.createComponent(SavedGameBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,79 @@
+$buttonBgColor: rgb(243, 243, 243);
+$buttonBgColorHover: rgb(231, 231, 231);
+$buttonBgContent: rgb(160, 160, 160);
+$primaryTextColor: rgb(70, 70, 70);
+$primarySelection: rgb(230, 230, 230);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #ffffff;
+  min-width: 100vw;
+  padding: 1rem;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  color: $primaryTextColor;
+  margin-left: 10px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $buttonBgColor;
+  border-radius: 5px;
+  //   padding: 2px;
+  width: 35px;
+  height: 35px;
+  color: $buttonBgContent;
+}
+.btn:hover {
+  background-color: $buttonBgColorHover;
+  transition: 150ms ease-in;
+  color: black;
+}
+.games-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  //   background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  box-shadow: 1px 1px 3px 1px rgba($color: #000000, $alpha: 0.1);
+  //   border: 1px solid rgb(224, 224, 224);
+}
+
+.game-title {
+  width: 100%;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $primaryTextColor;
+}
+.game-title:hover {
+  background-color: $primarySelection;
+  border-radius: 25px;
+  cursor: pointer;
+  color: black;
+}
