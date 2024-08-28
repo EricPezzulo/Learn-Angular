@@ -6,10 +6,11 @@ import {
   trigger,
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CurrentCell } from '../add-jeopardy-question/add-jeopardy-question.component';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { GameDataService, GameScore } from '../gamedata.service';
 
 @Component({
   selector: 'app-answer-question',
@@ -33,7 +34,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class AnswerQuestionComponent {
   isBackdropOpen: boolean = false;
   isDialogOpen: boolean = false;
+  gameData: GameDataService = inject(GameDataService);
+
   @Input() currentCell: CurrentCell = { answerOptions: [] };
+  gameScore: GameScore[] = [];
+
+  ngOnInit() {
+    this.gameScore = this.gameData.getGameScore();
+  }
 
   optionA: string = '';
   optionB: string = '';
@@ -65,6 +73,8 @@ export class AnswerQuestionComponent {
         console.log('correct');
         // display correct animation
         // add currentCell.pointValue to team who answered
+        //*TODO: this needs to be added
+        //*TODO: this.gameScore.find((x)=> x.playerId === playerId)
       } else {
         console.log('incorrect');
         // display incorrect animation

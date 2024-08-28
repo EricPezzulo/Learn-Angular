@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { PlayerNameArr } from './player-entry/player-entry.component';
+import { v4 as uuidv4 } from 'uuid';
+import { randomInt } from 'crypto';
 @Injectable({
   providedIn: 'root',
 })
@@ -247,13 +248,64 @@ export class GameDataService {
     },
   ];
 
+  protected gameScore: GameScore[] = [
+    {
+      playerName: 'Player 1',
+      playerScore: 0,
+      victorious: undefined,
+      playerId: uuidv4(),
+    },
+  ];
+
+  protected currentPlayerTurn = { playerId: '', playerName: '' };
+
+  getCurrentPlayerTurn() {
+    return this.currentPlayerTurn;
+  }
+  randomFirstTurnAssignment(playerData: any) {
+    // console.log(playerData);
+    let numOfPlayers = playerData.length;
+    const randomInt = Math.floor(Math.random() * numOfPlayers) + 1;
+    interface Player {
+      playerName: string;
+      playerId: string;
+      playerNum: number;
+    }
+    const startingPlayer = playerData.find(
+      (x: Player) => x.playerNum === randomInt
+    );
+    this.currentPlayerTurn = startingPlayer;
+    // console.log(startingPlayer);
+    return startingPlayer;
+  }
+
+  getGameScore() {
+    return this.gameScore;
+  }
+  getPlayerData(playerId: string) {
+    const playerData = this.gameScore.find((x) => x.playerId === playerId);
+    return playerData;
+  }
   getAllGameData(): GameBoardData[] {
     return this.gameData;
   }
+  updatePlayerNames(names: PlayerNameArr[]) {
+    for (let i = 0; i < names.length; i++) {
+      let playerName = Object.values(names[i])[0];
+      if (this.gameScore[i]) {
+        this.gameScore[i].playerName = playerName;
+      } else {
+        this.gameScore.push({
+          playerName: playerName,
+          playerScore: 0,
+          victorious: undefined,
+          playerId: uuidv4(),
+        });
+      }
+    }
 
-  // getCategory(): Categories[] {
-  //   return this.gameData.categories;
-  // }
+    return this.gameScore;
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -261,12 +313,11 @@ export class GameDataService {
     const response = await fetch(this.url);
     const data = await response.json();
     this.gameData = data;
-    // console.log(this.gameData);
     return data;
   }
 
   addQuestion(data: any) {
-    console.log(data);
+    // console.log(data);
     const questionToUpdate = this.gameData.find(
       (x) => x.row === Number(data.row) && x.column === data.column
     );
@@ -289,7 +340,7 @@ export class GameDataService {
     if (questionToUpdate?.complete === false) {
       questionToUpdate.complete = true;
     }
-    console.log(questionToUpdate);
+    // console.log(questionToUpdate);
   }
 
   addCategory(data: any) {
@@ -301,12 +352,13 @@ export class GameDataService {
       );
       if (categoryToUpdate) {
         categoryToUpdate.categoryName = data.input;
-        console.log(this.gameData);
+        // console.log(this.gameData);
       }
     }
   }
 }
 
+//? Type Interfaces
 export interface GameData {
   categories: Categories[];
 }
@@ -328,3 +380,10 @@ export interface GameBoardData {
 }
 export type AnswerType = { [key: string]: string };
 export type AnswerOptions = AnswerType[];
+
+export interface GameScore {
+  playerName: string;
+  playerScore: number;
+  victorious: boolean | undefined;
+  playerId: string | undefined;
+}

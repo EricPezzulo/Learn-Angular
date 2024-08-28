@@ -70,7 +70,7 @@ tfoot {
   tr {
     th {
       // height: 100%;
-      background: rgb(189, 193, 202);
+      background: rgb(74, 109, 190);
       border: none;
     }
   }
@@ -79,12 +79,21 @@ tfoot {
   background-color: rgb(185, 166, 166);
   // height: 200px;
 }
+
 .team-score {
-  display: flex !important;
-  flex-direction: column !important;
-  font-size: 1rem !important;
-  color: black !important;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: black;
 }
+.current-player {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: black $Maize;
+  background-color: rgb(32, 154, 224);
+}
+
 caption {
   padding-block: 1rem;
   font-family: "Inter", sans-serif;

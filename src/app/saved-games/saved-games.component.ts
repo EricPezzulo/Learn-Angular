@@ -23,10 +23,6 @@ export class SavedGamesComponent {
 
   selectGame(str: string) {
     if (str === 'game1') {
-      //open game board
-      // load in game1 data from json db
-      console.log('game 1 to open');
-
       this.showSavedGame = true;
     }
   }

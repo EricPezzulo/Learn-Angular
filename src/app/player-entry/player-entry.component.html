@@ -1,0 +1,75 @@
+<div [@openBackdrop]="isBackdropOpen ? 'open' : 'closed'" class="backdrop">
+  <div [@openDialog]="isDialogOpen ? 'open' : 'closed'" class="container">
+    <div>
+      <div class="player-count-input-label-container">
+        <label class="player-count-input-label" for="playerCountInput"
+          >Select amount of players or teams:</label
+        >
+      </div>
+
+      <div class="player-buttons">
+        <button
+          (click)="selectAmountOfPlayers(1)"
+          type="button"
+          [ngClass]="{
+            selected: numOfPlayers === 1,
+            'player-count-btn': numOfPlayers !== 1
+          }"
+        >
+          1
+        </button>
+        <button
+          (click)="selectAmountOfPlayers(2)"
+          type="button"
+          [ngClass]="{
+            selected: numOfPlayers === 2,
+            'player-count-btn': numOfPlayers !== 2
+          }"
+        >
+          2
+        </button>
+        <button
+          (click)="selectAmountOfPlayers(3)"
+          type="button"
+          [ngClass]="{
+            selected: numOfPlayers === 3,
+            'player-count-btn': numOfPlayers !== 3
+          }"
+        >
+          3
+        </button>
+        <button
+          (click)="selectAmountOfPlayers(4)"
+          type="button"
+          [ngClass]="{
+            selected: numOfPlayers === 4,
+            'player-count-btn': numOfPlayers !== 4
+          }"
+        >
+          4
+        </button>
+      </div>
+    </div>
+    @if(numOfPlayersSelected){
+    <div class="player-info-container">
+      @for (item of playersArray; let idx = $index; track $index) {
+      <div class="player-info-input">
+        <label class="player-name-input-label" for="">
+          Player {{ item }} Name:
+        </label>
+        <input
+          (change)="captureName($event, idx)"
+          class="player-name-input"
+          type="text"
+          name="player1Name"
+        />
+      </div>
+      }
+    </div>
+    <div>
+      <button (click)="submitNames()" class="btn continue">Continue</button>
+      <button class="btn close">Close</button>
+    </div>
+    }
+  </div>
+</div>

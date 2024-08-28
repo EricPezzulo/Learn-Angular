@@ -86,16 +86,23 @@
     </tbody>
     }
 
-    <!-- <tfoot>
+    <tfoot>
       <tr>
-        <th scope="row">Team NAME: 400pts</th>
-        <td class="team-score">
-          <p>A TEAM</p>
-          <p>$11,300</p>
+        <th scope="row">Score</th>
+        @if(gameScore.length > 0 ){ @for(item of gameScore; track $index){
+        <td
+          [ngClass]="{
+            'current-player': currentPlayerTurn.playerId === item.playerId,
+            'team-score': currentPlayerTurn.playerId !== item.playerId
+          }"
+        >
+          <p>{{ item.playerName }}</p>
+          <p>${{ item.playerScore }}</p>
         </td>
+        } }
       </tr>
-    </tfoot> -->
+    </tfoot>
   </table>
 </div>
-
+<app-player-entry></app-player-entry>
 <app-answer-question [currentCell]="currentCell"></app-answer-question>

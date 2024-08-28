@@ -29,7 +29,7 @@ export class JeopardyComponent {
   }
   goBack() {
     this.currentTab = 'chose-options';
-    console.log(this.currentTab);
+    // console.log(this.currentTab);
   }
 
   openQuestion() {
